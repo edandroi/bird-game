@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{99446F99-5951-FBD2-9092-C94B8B174002}</ProjectGuid>
+    <ProjectGuid>{4C768C05-6D85-433A-0C2B-F1415C65B7A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -54,24 +54,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BulletBehavior.cs" />
+    <Compile Include="Assets\Scripts\BulletManager.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\ChangeColor\ChangeColor.cs" />
-    <Compile Include="Assets\Scripts\ChangeColor\ColorPicker.cs" />
-    <Compile Include="Assets\Scripts\ChangeColor\ObjectColor.cs" />
-    <Compile Include="Assets\Scripts\ChangeColor\Player.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\BulletBehavior.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\BulletManager.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\CameraShake.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\ColorManager.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\FlightSpeed.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\FollowMouse.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\LookToMouse.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\PlayerBird.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\RotationLimit.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\TreeBehavior.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\TreeKillzone.cs" />
-    <Compile Include="Assets\Scripts\Magic Woods\TreeManager.cs" />
+    <Compile Include="Assets\Scripts\ColorManager.cs" />
+    <Compile Include="Assets\Scripts\FlightSpeed.cs" />
+    <Compile Include="Assets\Scripts\FollowMouse.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\LookToMouse.cs" />
     <Compile Include="Assets\Scripts\Migration\BirdManager.cs" />
     <Compile Include="Assets\Scripts\Migration\CloudGenerator.cs" />
     <Compile Include="Assets\Scripts\Migration\Clouds.cs" />
@@ -80,17 +72,23 @@
     <Compile Include="Assets\Scripts\Migration\m_GameManager.cs" />
     <Compile Include="Assets\Scripts\Migration\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Migration\Score.cs" />
+    <Compile Include="Assets\Scripts\PlayerBird.cs" />
+    <Compile Include="Assets\Scripts\RotationLimit.cs" />
+    <Compile Include="Assets\Scripts\Services.cs" />
+    <Compile Include="Assets\Scripts\TreeBehavior.cs" />
+    <Compile Include="Assets\Scripts\TreeKillzone.cs" />
+    <Compile Include="Assets\Scripts\TreeManager.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

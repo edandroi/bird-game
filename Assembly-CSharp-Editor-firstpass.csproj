@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{2C31418F-9E98-81C9-B272-BA61EDEE4F51}</ProjectGuid>
+    <ProjectGuid>{64C79ABB-250E-4F1C-DC5F-E90CEF61D54B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor-firstpass</AssemblyName>
@@ -56,16 +56,16 @@
   <ItemGroup>
     <Compile Include="Assets\Plugins\Editor\JetBrains\Unity3DRider.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -263,7 +263,7 @@
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/2018prototypes/bird-game-prototypes/bird-game-prototypes/Library/resharper-unity-libs/nunit3.5.0/nunit.framework.dll</HintPath>
+      <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/resharper-unity-libs/nunit3.5.0/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
