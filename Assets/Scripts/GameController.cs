@@ -15,9 +15,14 @@ public class GameController : MonoBehaviour {
 	private void _InitializeServices()
 	{
 		Services.GameController = this;	
-		Services.BulletManager = GameObject.Find("Bullet Manager").GetComponent<BulletManager>();
+		
+		var colorManagerGameObject = new GameObject("Color Manager");
+		Services.ColorManager = colorManagerGameObject.AddComponent<ColorManager>();
+		
+//		var treeManagerGameObject = new GameObject("Tree Manager");
+//		Services.TreeManager = treeManagerGameObject.AddComponent<TreeManager>();
+		
 		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
-		Services.ColorManager = GameObject.Find("ColorManager").GetComponent<ColorManager>();
 		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();
 		Services.FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
 	}

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerBird : MonoBehaviour
 {
-	public CameraShake camShake;
 	
 	// Keys for movement
 	public KeyCode right;
@@ -24,12 +23,6 @@ public class PlayerBird : MonoBehaviour
 	
 	private SpriteRenderer m_SpriteRenderer;
 	private Color m_NewColor;
-	
-	// Color Manager
-	public ColorManager m_ColorManager;
-	private Color32 C_pink;
-	private Color32 C_blue;
-	private Color32 C_yellow;
 
 	private Vector3 initialPos;
 	
@@ -41,16 +34,8 @@ public class PlayerBird : MonoBehaviour
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 		pickedColor = m_SpriteRenderer.color;
-	
-		// Get the colors from Color Manager
-		m_ColorManager = GameObject.Find("Color Manager").GetComponent<ColorManager>();
-		C_pink = m_ColorManager.C_pink;
-		C_blue = m_ColorManager.C_blue;
-		C_yellow = m_ColorManager.C_yellow;
 
 		initialPos = transform.position;
-		
-		camShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
 	}
 	
 
@@ -91,17 +76,17 @@ public class PlayerBird : MonoBehaviour
 		// Pick Color
 		if (Input.GetKeyDown(c_Btn1))
 		{
-			pickedColor = C_pink;
+			pickedColor = Services.ColorManager.C_pink;
 		}
 
 		if (Input.GetKeyDown(c_Btn2))
 		{
-			pickedColor = C_blue;
+			pickedColor = Services.ColorManager.C_blue;
 		}
 
 		if (Input.GetKeyDown(c_Btn3))
 		{
-			pickedColor = C_yellow;
+			pickedColor = Services.ColorManager.C_yellow;
 		}
 
 		if (Input.anyKey == false && transform.position.x != 0)
