@@ -28,8 +28,13 @@ public class PlayerBird : MonoBehaviour
 	
 	// player health
 	public float playerHealth;
+
+	private float flightSpeedNow;
+	private float flightSpeedPre;
 	
-	// Use this for initialization
+	private float degree;
+	private float angle;
+
 	void Start () 
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,38 +46,18 @@ public class PlayerBird : MonoBehaviour
 
 	void Update ()
 	{
-		PlayerInput();
+		MoveableArea();
+		ChangePlayerColor();
+		PlayerMovement();
+		PlayerRotation();
 		
 		Debug.Log("player health is "+playerHealth);
 	}
 
-	
-	
-	
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.CompareTag("bullet"))
-		{
-			Debug.Log("Shot!");
-			playerHealth -= 1f;
-		}
-	}
-
-	void PlayerInput()
+	void ChangePlayerColor()
 	{
 		m_SpriteRenderer.color = pickedColor;
-
-		//Change Sprites
-		if (Input.GetAxis("Mouse Y") > 0)
-		{
-			m_SpriteRenderer.sprite = birdDown;
-		}
 		
-		if (Input.GetAxis("Mouse Y") <= 0)
-		{
-			m_SpriteRenderer.sprite = birdUp;
-		}
-
 		// Pick Color
 		if (Input.GetKeyDown(c_Btn1))
 		{
@@ -89,11 +74,79 @@ public class PlayerBird : MonoBehaviour
 			pickedColor = Services.ColorManager.C_yellow;
 		}
 
+		/*
 		if (Input.anyKey == false && transform.position.x != 0)
 		{
 			transform.position = Vector3.Lerp(transform.position, initialPos, Time.deltaTime);
 		}
-		
+		*/	
 	}
 
+	void PlayerMovement()
+	{
+		//Change Sprites
+		if (Input.GetAxis("Mouse Y") > 0)
+		{
+			m_SpriteRenderer.sprite = birdDown;
+		}
+		
+		if (Input.GetAxis("Mouse Y") <= 0)
+		{
+			m_SpriteRenderer.sprite = birdUp;
+		}
+		
+		
+		//Move Player Up OR Down
+		if (Services.FlightSpeed.PlayerFlightSpeed() > 6)
+		{
+			transform.position = Vector3.Lerp(transform.position, new Vector3(0, 4.2f, 0), Time.deltaTime);
+		}
+		else
+		{
+			transform.position = Vector3.Lerp(transform.position, new Vector3(0, -4.2f, 0), Time.deltaTime);
+		}
+	}
+
+	void PlayerRotation()
+	{
+		if (Services.FlightSpeed.PlayerFlightSpeed() > 6)
+		{	
+				if (transform.position.y <= 2)
+				{
+					degree = 35f;
+					angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+					transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+				}
+				else
+				{
+					degree = 0f;
+					angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+					transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+				}
+		}
+		else
+		{			
+			if (transform.position.y >= -2)
+			{
+				degree = -45f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+			else
+			{
+				degree = 0f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+		}
+	}
+
+	void MoveableArea()
+	{
+		Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+		Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+ 
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, minScreenBounds.x + 1, maxScreenBounds.x - 1),Mathf.Clamp(transform.position.y, minScreenBounds.y + 1, maxScreenBounds.y - 1), transform.position.z);
+	}
+	
 }

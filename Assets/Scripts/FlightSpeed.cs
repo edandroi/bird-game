@@ -48,21 +48,8 @@ public class FlightSpeed : MonoBehaviour {
 		
 		Debug.Log("speed is "+flightSpeed);
 		
-		// Calculate Directions
-		if (mousePos.y < flapRangeMax && mousePos.y > flapRangeMin)
-		{
-			Debug.Log("in flap range");
-			if ((currentPos.y - lastPos.y) > 0) // moving up
-			{
-				moveUpNow = true;
-			}
-			else
-			{
-				moveUpNow = false;
-			}
-		}
-		
-		
+		CalculateDirections();
+
 		// Compare the lastest TP with the last TP
 		if (moveUpNow != moveUpPre)
 		{
@@ -73,11 +60,9 @@ public class FlightSpeed : MonoBehaviour {
 			if (flightSpeed < maxSpeed)
 			{
 				flightSpeed += speedUp;
-//				Debug.Log("speeding up");
 			}
 		}
-
-		
+	
 		if (moveUpNow == moveUpPre)
 		{
 //			Debug.Log("slowing down");
@@ -95,10 +80,40 @@ public class FlightSpeed : MonoBehaviour {
 				}
 			}
 		}
-
 		
 		lastPos = currentPos;
 		moveUpPre = moveUpNow;
+	}
+
+	// FUNCTIONS
+	
+	void CalculateDirections()
+	{
+		if (mousePos.y < flapRangeMax && mousePos.y > flapRangeMin)
+		{
+			Debug.Log("in flap range");
+			if ((currentPos.y - lastPos.y) > 0) // moving up
+			{
+				moveUpNow = true;
+			}
+			else
+			{
+				moveUpNow = false;
+			}
+		}
+	}
+	
+	// BOOLS
+
+	public bool MovingUp()
+	{
+		return moveUpNow;
+	}
+
+	// VALUES
+	public float PlayerFlightSpeed()
+	{
+		return flightSpeed;
 	}
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                             

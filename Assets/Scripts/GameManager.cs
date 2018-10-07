@@ -19,11 +19,9 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		m_TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
-		m_FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
+		Cursor.visible = false;
 	}
 	
-
 	void Update () {
 
 		if (numOfMissedBirds > 10)
