@@ -32,24 +32,40 @@ public class FlightSpeed : MonoBehaviour {
 
 	private float direction;
 
-	
-	private Rigidbody2D rb;
-
-	void Start()
-	{
-		rb = GetComponent<Rigidbody2D>();
-	}
-
 	void Update()
 	{
 		mousePos = Input.mousePosition;
 		mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 		currentPos = mousePos;
 		
-		Debug.Log("speed is "+flightSpeed);
+		//Debug.Log("speed is "+flightSpeed);
 		
 		CalculateDirections();
+		CalculateFlightSpeed();
+		
+		
+		lastPos = currentPos;
+		moveUpPre = moveUpNow;
+	}
 
+	// FUNCTIONS
+	void CalculateDirections()
+	{
+		if (mousePos.y < flapRangeMax && mousePos.y > flapRangeMin)
+		{
+			if ((currentPos.y - lastPos.y) > 0) // moving up
+			{
+				moveUpNow = true;
+			}
+			else
+			{
+				moveUpNow = false;
+			}
+		}
+	}
+
+	void CalculateFlightSpeed()
+	{
 		// Compare the lastest TP with the last TP
 		if (moveUpNow != moveUpPre)
 		{
@@ -80,31 +96,9 @@ public class FlightSpeed : MonoBehaviour {
 				}
 			}
 		}
-		
-		lastPos = currentPos;
-		moveUpPre = moveUpNow;
 	}
 
-	// FUNCTIONS
-	
-	void CalculateDirections()
-	{
-		if (mousePos.y < flapRangeMax && mousePos.y > flapRangeMin)
-		{
-			Debug.Log("in flap range");
-			if ((currentPos.y - lastPos.y) > 0) // moving up
-			{
-				moveUpNow = true;
-			}
-			else
-			{
-				moveUpNow = false;
-			}
-		}
-	}
-	
 	// BOOLS
-
 	public bool MovingUp()
 	{
 		return moveUpNow;

@@ -5,6 +5,42 @@
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="PDollar" t="Include">
+          <e p="Resources" t="Include">
+            <e p="GestureSet" t="Include">
+              <e p="10-stylus-MEDIUM" t="Include">
+                <e p="10-stylus-medium-arrowhead-01.xml" t="Include" />
+                <e p="10-stylus-medium-asterisk-01.xml" t="Include" />
+                <e p="10-stylus-medium-D-01.xml" t="Include" />
+                <e p="10-stylus-medium-exclamation_point-01.xml" t="Include" />
+                <e p="10-stylus-medium-five_point_star-01.xml" t="Include" />
+                <e p="10-stylus-medium-H-01.xml" t="Include" />
+                <e p="10-stylus-medium-half_note-01.xml" t="Include" />
+                <e p="10-stylus-medium-I-01.xml" t="Include" />
+                <e p="10-stylus-medium-line-01.xml" t="Include" />
+                <e p="10-stylus-medium-N-01.xml" t="Include" />
+                <e p="10-stylus-medium-null-01.xml" t="Include" />
+                <e p="10-stylus-medium-P-01.xml" t="Include" />
+                <e p="10-stylus-medium-pitchfork-01.xml" t="Include" />
+                <e p="10-stylus-medium-six_point_star-01.xml" t="Include" />
+                <e p="10-stylus-medium-T-01.xml" t="Include" />
+                <e p="10-stylus-medium-X-01.xml" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Demo.cs" t="Include" />
+            <e p="DemoOct7.cs" t="Include" />
+            <e p="PDollarGestureRecognizer" t="Include">
+              <e p="Geometry.cs" t="Include" />
+              <e p="Gesture.cs" t="Include" />
+              <e p="GestureIO.cs" t="Include" />
+              <e p="Point.cs" t="Include" />
+              <e p="PointCloudRecognizer.cs" t="Include" />
+              <e p="Result.cs" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">
@@ -16,12 +52,14 @@
           <e p="BulletBehavior.cs" t="Include" />
           <e p="BulletManager.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
+          <e p="CameraShake.cs" t="Include" />
           <e p="ColorManager.cs" t="Include" />
           <e p="FlightSpeed.cs" t="Include" />
           <e p="FollowMouse.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
+          <e p="HiBirds.cs" t="Include" />
           <e p="LookToMouse.cs" t="Include" />
           <e p="Migration" t="Include">
             <e p="BirdManager.cs" t="Include" />
@@ -34,7 +72,9 @@
             <e p="Score.cs" t="Include" />
           </e>
           <e p="PlayerBird.cs" t="Include" />
+          <e p="RaycastTest.cs" t="Include" />
           <e p="RotationLimit.cs" t="Include" />
+          <e p="SayHiToBirds.cs" t="Include" />
           <e p="Services.cs" t="Include" />
           <e p="TreeBehavior.cs" t="Include" />
           <e p="TreeKillzone.cs" t="Include" />

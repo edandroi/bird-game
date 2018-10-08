@@ -32,19 +32,16 @@ public class CloudGenerator : MonoBehaviour
 		if (timer < 0)
 		{
 			Vector3 spawnPosition = Vector3.zero;
-			float scaler = Random.RandomRange(0.7f, 1f);
 			
 			switch (Random.Range(0, numOfClouds))
 			{
 				case 0:
 					spawnPosition = new Vector3(Random.Range(12f, 14f),Random.Range(-3.3f, 3.3f),0 );
 					Instantiate(cloud1,spawnPosition,Quaternion.identity);
-//					cloud0.transform.localScale = new Vector3(scaler, scaler, 1); 
 					break;
 				case 1: 
 					spawnPosition = new Vector3(Random.Range(12f, 14f),Random.Range(-3.3f, 3.3f),0 );
 					Instantiate(cloud1,spawnPosition,Quaternion.identity);
-//					cloud1.transform.localScale = new Vector3(scaler, scaler, 1); 
 					break;
 				case 2:
 					spawnPosition = new Vector3(Random.Range(12f, 14f),Random.Range(-3.3f, 3.3f),0 );

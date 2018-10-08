@@ -23,8 +23,6 @@ public class PlayerBird : MonoBehaviour
 	
 	private SpriteRenderer m_SpriteRenderer;
 	private Color m_NewColor;
-
-	private Vector3 initialPos;
 	
 	// player health
 	public float playerHealth;
@@ -39,21 +37,22 @@ public class PlayerBird : MonoBehaviour
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 		pickedColor = m_SpriteRenderer.color;
-
-		initialPos = transform.position;
 	}
 	
 
 	void Update ()
 	{
-		MoveableArea();
-		ChangePlayerColor();
-		PlayerMovement();
-		PlayerRotation();
-		
-		Debug.Log("player health is "+playerHealth);
+		MoveableArea(); // The screen space that the player is allowed to move
+		ChangePlayerColor(); // Controls how players can change color
+		PlayerMovement(); // Controls how the player moves
+		PlayerRotation(); // Controls player rotation
 	}
 
+
+
+	
+	// FUNCTIONS
+	
 	void ChangePlayerColor()
 	{
 		m_SpriteRenderer.color = pickedColor;
@@ -73,15 +72,8 @@ public class PlayerBird : MonoBehaviour
 		{
 			pickedColor = Services.ColorManager.C_yellow;
 		}
-
-		/*
-		if (Input.anyKey == false && transform.position.x != 0)
-		{
-			transform.position = Vector3.Lerp(transform.position, initialPos, Time.deltaTime);
-		}
-		*/	
 	}
-
+	
 	void PlayerMovement()
 	{
 		//Change Sprites
@@ -97,11 +89,11 @@ public class PlayerBird : MonoBehaviour
 		
 		
 		//Move Player Up OR Down
-		if (Services.FlightSpeed.PlayerFlightSpeed() > 6)
+		if (Services.FlightSpeed.PlayerFlightSpeed() > 8)
 		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(0, 4.2f, 0), Time.deltaTime);
 		}
-		else
+		if (Services.FlightSpeed.PlayerFlightSpeed() < 7)
 		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(0, -4.2f, 0), Time.deltaTime);
 		}
@@ -109,7 +101,7 @@ public class PlayerBird : MonoBehaviour
 
 	void PlayerRotation()
 	{
-		if (Services.FlightSpeed.PlayerFlightSpeed() > 6)
+		if (Services.FlightSpeed.PlayerFlightSpeed() > 8)
 		{	
 				if (transform.position.y <= 2)
 				{
@@ -124,7 +116,7 @@ public class PlayerBird : MonoBehaviour
 					transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 				}
 		}
-		else
+		if (Services.FlightSpeed.PlayerFlightSpeed() < 7)
 		{			
 			if (transform.position.y >= -2)
 			{

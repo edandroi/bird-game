@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 
 	public int score;
 
-	float playerHealth;
 	
 	// Fly Speed
 	private FlightSpeed m_FlightSpeed;
@@ -25,11 +24,6 @@ public class GameManager : MonoBehaviour
 	void Update () {
 
 		if (numOfMissedBirds > 10)
-		{
-			Debug.Log("You lost");
-		}
-
-		if (playerHealth < 0)
 		{
 			Debug.Log("You lost");
 		}
