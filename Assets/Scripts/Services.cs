@@ -13,4 +13,5 @@ public static class Services
     public static TreeManager TreeManager;
     public static ColorManager ColorManager;
     public static AudioManager AudioManager;
+    public static AnimationController AnimationController;
 }

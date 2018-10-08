@@ -16,14 +16,17 @@ public class GameController : MonoBehaviour {
 	{
 		Services.GameController = this;	
 		
+		// Color Manager
 		var colorManagerGameObject = new GameObject("Color Manager");
 		Services.ColorManager = colorManagerGameObject.AddComponent<ColorManager>();
 		
+		// Audio Manager
 		var audioManagerGameObject = new GameObject("Audio Manager");
 		Services.AudioManager = audioManagerGameObject.AddComponent<AudioManager>();
 		
-//		var treeManagerGameObject = new GameObject("Tree Manager");
-//		Services.TreeManager = treeManagerGameObject.AddComponent<TreeManager>();
+		// Animation Controller
+		var animationControllerGameObject = new GameObject("Animation Controller");
+		Services.AnimationController = animationControllerGameObject.AddComponent<AnimationController>();
 		
 		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
 		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();

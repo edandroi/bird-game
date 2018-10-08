@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SayHiToBirds : MonoBehaviour {
+public class SayHiToBirds : MonoBehaviour
+{
 
+	public GameObject voiceLines;
+	
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		Raycasting();
-	
 	}
 
 	void Raycasting()
@@ -25,6 +27,10 @@ public class SayHiToBirds : MonoBehaviour {
 		
 		if (Input.GetMouseButtonDown(0))
 		{
+//			Vector2 voiceDir = transform.position + transform.right * 3;
+//			Instantiate(voiceLines, voiceDir, Quaternion.identity, gameObject.transform);
+			Services.AnimationController.PlayerVoiceAni(gameObject);
+			
 			if (hit.collider != null)
 			{
 				if (hit.collider.gameObject.tag == "bird")
