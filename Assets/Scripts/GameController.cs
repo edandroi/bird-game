@@ -19,6 +19,9 @@ public class GameController : MonoBehaviour {
 		var colorManagerGameObject = new GameObject("Color Manager");
 		Services.ColorManager = colorManagerGameObject.AddComponent<ColorManager>();
 		
+		var audioManagerGameObject = new GameObject("Audio Manager");
+		Services.AudioManager = audioManagerGameObject.AddComponent<AudioManager>();
+		
 //		var treeManagerGameObject = new GameObject("Tree Manager");
 //		Services.TreeManager = treeManagerGameObject.AddComponent<TreeManager>();
 		

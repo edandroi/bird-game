@@ -12,4 +12,5 @@ public static class Services
     public static PlayerBird PlayerBird;
     public static TreeManager TreeManager;
     public static ColorManager ColorManager;
+    public static AudioManager AudioManager;
 }

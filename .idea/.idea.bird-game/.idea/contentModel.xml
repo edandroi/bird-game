@@ -49,6 +49,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AudioManager.cs" t="Include" />
           <e p="BulletBehavior.cs" t="Include" />
           <e p="BulletManager.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
