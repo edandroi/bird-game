@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4119040405428312}
   - component: {fileID: 212978902171036892}
   - component: {fileID: 95368944084071924}
+  - component: {fileID: 111759206225810672}
   m_Layer: 0
   m_Name: voiceLines
   m_TagString: Untagged
@@ -59,6 +60,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &111759206225810672
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432606650240620}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f7f611adceaaf4f2cb619545e6156e2d, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!212 &212978902171036892
 SpriteRenderer:
   m_ObjectHideFlags: 1

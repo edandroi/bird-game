@@ -27,9 +27,9 @@ public class SayHiToBirds : MonoBehaviour
 		
 		if (Input.GetMouseButtonDown(0))
 		{
-//			Vector2 voiceDir = transform.position + transform.right * 3;
-//			Instantiate(voiceLines, voiceDir, Quaternion.identity, gameObject.transform);
-			Services.AnimationController.PlayerVoiceAni(gameObject);
+			Vector2 voiceDir = transform.position + transform.right * 3;
+			Instantiate(voiceLines, voiceDir, Quaternion.identity, gameObject.transform);
+//			Services.AnimationController.PlayerVoiceAni(gameObject);
 			
 			if (hit.collider != null)
 			{
@@ -38,6 +38,11 @@ public class SayHiToBirds : MonoBehaviour
 					Debug.Log("Hi Bird!");
 				}
 			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			voiceLines.GetComponent<Animator>().SetBool("callMe2", true);
 		}
 	}
 }

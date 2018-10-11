@@ -20,6 +20,7 @@ public class AnimationController : MonoBehaviour
 	{
 		var playerVoiceObj = new GameObject("Player Voice");
 		Animator m_Animator = playerVoiceObj.AddComponent<Animator>();
+		
 //		Animation m_Animation = playerVoiceObj.AddComponent<Animation>();
 //		m_Animation.AddClip(playerVoiceAni, "playerVoice");
 		m_Animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/playerVoiceAni");
