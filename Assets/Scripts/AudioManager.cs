@@ -24,15 +24,15 @@ public class AudioManager : MonoBehaviour {
 
 	}
 
+	public void PlayerSaysHi()
+	{
+		float vol = Random.Range (volLowRange, volHighRange);
+		source.PlayOneShot(playerHiSound,vol);
+	}
 
-	void Update () {
-
-		if (Input.GetMouseButtonDown(0))
-		{
-			//Debug.Log("I work!");
-			float vol = Random.Range (volLowRange, volHighRange);
-			source.PlayOneShot(playerHiSound,vol);
-		}
-    
+	public void BirdSaysHi()
+	{
+		float vol = Random.Range (volLowRange, volHighRange);
+		source.PlayOneShot(playerHiSound,vol);
 	}
 }

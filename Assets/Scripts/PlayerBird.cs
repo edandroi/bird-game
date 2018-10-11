@@ -6,10 +6,6 @@ using UnityEngine;
 public class PlayerBird : MonoBehaviour
 {
 	
-	// Keys for movement
-	public KeyCode right;
-	public KeyCode left;
-	
 	// Sprites
 	public Sprite birdUp;
 	public Sprite birdDown;

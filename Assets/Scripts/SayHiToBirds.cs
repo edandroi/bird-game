@@ -5,10 +5,11 @@ using UnityEngine;
 public class SayHiToBirds : MonoBehaviour
 {
 
-	public GameObject voiceLines;
+	private GameObject voiceLines;
 	
 	// Use this for initialization
 	void Start () {
+		
 	}
 	
 	// Update is called once per frame
@@ -25,11 +26,10 @@ public class SayHiToBirds : MonoBehaviour
 		Debug.DrawLine(transform.position, raycasted, Color.green);
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, raycasted);
 		
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(1))
 		{
-			Vector2 voiceDir = transform.position + transform.right * 3;
-			Instantiate(voiceLines, voiceDir, Quaternion.identity, gameObject.transform);
-//			Services.AnimationController.PlayerVoiceAni(gameObject);
+			Services.FeedbackAnimations.InstantiateVoiceLines(transform.position, transform.rotation);		
+			Services.AudioManager.PlayerSaysHi();
 			
 			if (hit.collider != null)
 			{
@@ -38,11 +38,6 @@ public class SayHiToBirds : MonoBehaviour
 					Debug.Log("Hi Bird!");
 				}
 			}
-		}
-
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			voiceLines.GetComponent<Animator>().SetBool("callMe2", true);
 		}
 	}
 }

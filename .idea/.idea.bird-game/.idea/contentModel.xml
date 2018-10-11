@@ -57,11 +57,13 @@
           <e p="CameraShake.cs" t="Include" />
           <e p="ColorManager.cs" t="Include" />
           <e p="DestroyAnimation.cs" t="Include" />
+          <e p="FeedbackAnimations.cs" t="Include" />
           <e p="FlightSpeed.cs" t="Include" />
           <e p="FollowMouse.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
+          <e p="HiBack.cs" t="Include" />
           <e p="HiBirds.cs" t="Include" />
           <e p="LookToMouse.cs" t="Include" />
           <e p="Migration" t="Include">

@@ -70,11 +70,13 @@
     <Compile Include="Assets\Scripts\CameraShake.cs" />
     <Compile Include="Assets\Scripts\ColorManager.cs" />
     <Compile Include="Assets\Scripts\DestroyAnimation.cs" />
+    <Compile Include="Assets\Scripts\FeedbackAnimations.cs" />
     <Compile Include="Assets\Scripts\FlightSpeed.cs" />
     <Compile Include="Assets\Scripts\FollowMouse.cs" />
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\HiBack.cs" />
     <Compile Include="Assets\Scripts\HiBirds.cs" />
     <Compile Include="Assets\Scripts\LookToMouse.cs" />
     <Compile Include="Assets\Scripts\Migration\BirdManager.cs" />

@@ -25,8 +25,8 @@ public class GameController : MonoBehaviour {
 		Services.AudioManager = audioManagerGameObject.AddComponent<AudioManager>();
 		
 		// Animation Controller
-		var animationControllerGameObject = new GameObject("Animation Controller");
-		Services.AnimationController = animationControllerGameObject.AddComponent<AnimationController>();
+		var feedbackAnimationsGameObject = new GameObject("Feedback Animations");
+		Services.FeedbackAnimations = feedbackAnimationsGameObject.AddComponent<FeedbackAnimations>();
 		
 		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
 		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();
