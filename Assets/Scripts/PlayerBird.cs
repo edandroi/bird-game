@@ -76,17 +76,18 @@ public class PlayerBird : MonoBehaviour
 	
 	void PlayerMovement()
 	{
-		//Change Sprites
-		if (Input.GetAxis("Mouse Y") > 0)
-		{
-			m_SpriteRenderer.sprite = birdDown;
+		if(Input.GetMouseButton(0)){
+			//Change Sprites
+			if (Input.GetAxis("Mouse Y") > 0)
+			{
+				m_SpriteRenderer.sprite = birdDown;
+			}
+			
+			if (Input.GetAxis("Mouse Y") <= 0)
+			{
+				m_SpriteRenderer.sprite = birdUp;
+			}
 		}
-		
-		if (Input.GetAxis("Mouse Y") <= 0)
-		{
-			m_SpriteRenderer.sprite = birdUp;
-		}
-		
 		
 		//Move Player Up OR Down
 		if (Services.FlightSpeed.PlayerFlightSpeed() > 8)

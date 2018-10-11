@@ -66,36 +66,41 @@ public class FlightSpeed : MonoBehaviour {
 
 	void CalculateFlightSpeed()
 	{
-		// Compare the lastest TP with the last TP
-		if (moveUpNow != moveUpPre)
-		{
-			turningPosLast = turningPosCurrent;
-			turningPosCurrent = currentPos;
-			turningPointDis = Mathf.Abs(turningPosCurrent.y - turningPosLast.y);
 
-			if (flightSpeed < maxSpeed)
-			{
-				flightSpeed += speedUp;
-			}
-		}
+		
 	
-		if (moveUpNow == moveUpPre)
-		{
-//			Debug.Log("slowing down");
-			if (flightSpeed > minSpeed)
+			// Compare the lastest TP with the last TP
+			if (moveUpNow != moveUpPre)
 			{
-				if (slowDown < slowDownMax)
-				{
-					flightSpeed -= slowDown;
-					slowDown += slowDownEase;
-				}
-
-				else
-				{
-					flightSpeed -= slowDownMax;
+				turningPosLast = turningPosCurrent;
+				turningPosCurrent = currentPos;
+				turningPointDis = Mathf.Abs(turningPosCurrent.y - turningPosLast.y);
+				if (Input.GetMouseButton(0)){
+					if (flightSpeed < maxSpeed)
+					{
+						flightSpeed += speedUp;
+					}
 				}
 			}
-		}
+		
+			if (moveUpNow == moveUpPre)
+			{
+	//			Debug.Log("slowing down");
+				if (flightSpeed > minSpeed)
+				{
+					if (slowDown < slowDownMax)
+					{
+						flightSpeed -= slowDown;
+						slowDown += slowDownEase;
+					}
+	
+					else
+					{
+						flightSpeed -= slowDownMax;
+					}
+				}
+			}
+
 	}
 
 	// BOOLS
