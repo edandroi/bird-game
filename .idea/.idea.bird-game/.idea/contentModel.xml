@@ -49,23 +49,26 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="AnimationController.cs" t="Include" />
-          <e p="AudioManager.cs" t="Include" />
+          <e p="Birds" t="Include">
+            <e p="HiBack.cs" t="Include" />
+          </e>
           <e p="BulletBehavior.cs" t="Include" />
-          <e p="BulletManager.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
           <e p="CameraShake.cs" t="Include" />
-          <e p="ColorManager.cs" t="Include" />
-          <e p="DestroyAnimation.cs" t="Include" />
           <e p="FeedbackAnimations.cs" t="Include" />
-          <e p="FlightSpeed.cs" t="Include" />
           <e p="FollowMouse.cs" t="Include" />
-          <e p="GameController.cs" t="Include" />
-          <e p="GameManager.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
-          <e p="HiBack.cs" t="Include" />
-          <e p="HiBirds.cs" t="Include" />
           <e p="LookToMouse.cs" t="Include" />
+          <e p="Managers&amp;Controllers" t="Include">
+            <e p="AnimationController.cs" t="Include" />
+            <e p="AudioManager.cs" t="Include" />
+            <e p="BulletManager.cs" t="Include" />
+            <e p="ColorManager.cs" t="Include" />
+            <e p="GameController.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+            <e p="Services.cs" t="Include" />
+            <e p="TreeManager.cs" t="Include" />
+          </e>
           <e p="Migration" t="Include">
             <e p="BirdManager.cs" t="Include" />
             <e p="CloudGenerator.cs" t="Include" />
@@ -76,14 +79,16 @@
             <e p="PlayerInput.cs" t="Include" />
             <e p="Score.cs" t="Include" />
           </e>
-          <e p="PlayerBird.cs" t="Include" />
-          <e p="RaycastTest.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="DestroyAnimation.cs" t="Include" />
+            <e p="DrawLine.cs" t="Include" />
+            <e p="FlightSpeed.cs" t="Include" />
+            <e p="PlayerBird.cs" t="Include" />
+            <e p="SayHiToBirds.cs" t="Include" />
+          </e>
           <e p="RotationLimit.cs" t="Include" />
-          <e p="SayHiToBirds.cs" t="Include" />
-          <e p="Services.cs" t="Include" />
           <e p="TreeBehavior.cs" t="Include" />
           <e p="TreeKillzone.cs" t="Include" />
-          <e p="TreeManager.cs" t="Include" />
         </e>
       </e>
       <e p="bird-game.sln" t="IncludeFlat" />

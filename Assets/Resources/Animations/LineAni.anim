@@ -29,7 +29,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.033333335
+        time: 0.083333336
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -38,7 +38,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.06666667
+        time: 0.16666667
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -47,7 +47,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.33333334
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -66,13 +66,13 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 35c11480289b04a2598c1a360272d875, type: 3}
-    - time: 0.033333335
+    - time: 0.083333336
       value: {fileID: 21300000, guid: a655fb293e09b41b388da87ad3085fd4, type: 3}
-    - time: 0.06666667
+    - time: 0.16666667
       value: {fileID: 21300000, guid: a7ccb8355bfd44ee49b1ff54122c563b, type: 3}
-    - time: 0.1
+    - time: 0.25
       value: {fileID: 21300000, guid: 47a0ac92b34c749dd8faf0798377690c, type: 3}
-    - time: 0.13333334
+    - time: 0.33333334
       value: {fileID: 0}
     attribute: m_Sprite
     path: 
@@ -110,7 +110,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.15
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -139,7 +139,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.033333335
+        time: 0.083333336
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -148,7 +148,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.06666667
+        time: 0.16666667
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -157,7 +157,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.13333334
+        time: 0.33333334
         value: 0.56
         inSlope: 0
         outSlope: 0
@@ -177,7 +177,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.13333334
+  - time: 0.33333334
     functionName: DestroySelf
     data: 
     objectReferenceParameter: {fileID: 0}

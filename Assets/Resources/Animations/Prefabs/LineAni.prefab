@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4377986505567756}
   - component: {fileID: 95823261880512076}
   - component: {fileID: 212480888676432742}
+  - component: {fileID: 114573077850518850}
   m_Layer: 0
   m_Name: LineAni
   m_TagString: Untagged
@@ -59,6 +60,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114573077850518850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098115395269268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03404a80995543f18d55423dc3f5446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212480888676432742
 SpriteRenderer:
   m_ObjectHideFlags: 1
