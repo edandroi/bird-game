@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirds.cs" />
     <Compile Include="Assets\Scripts\RotationLimit.cs" />
+    <Compile Include="Assets\Scripts\SphereCaster.cs" />
     <Compile Include="Assets\Scripts\TreeBehavior.cs" />
     <Compile Include="Assets\Scripts\TreeKillzone.cs" />
     <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-asterisk-01.xml" />

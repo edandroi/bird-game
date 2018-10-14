@@ -15,6 +15,7 @@ public class DrawLine : MonoBehaviour
 	
 	void Update ()
 	{
+		transform.rotation = Services.PlayerBird.transform.rotation;
 		Vector2 direction = transform.right*30;
 		playerPosition = Services.PlayerBird.transform.position;
 		raycastDir = playerPosition + direction;

@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4213859560043318}
   - component: {fileID: 212274117541252282}
   - component: {fileID: 50436245461385972}
-  - component: {fileID: 60560909572268278}
   - component: {fileID: 114261680532224086}
+  - component: {fileID: 61521710266917774}
   m_Layer: 0
   m_Name: tree-1
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952856307662044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1995, y: -2.5684, z: 0}
+  m_LocalPosition: {x: 9.616996, y: -3.2411397, z: 0}
   m_LocalScale: {x: 4.7167, y: 4.7167, z: 4.7167}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,19 +63,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60560909572268278
-PolygonCollider2D:
+--- !u!61 &61521710266917774
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952856307662044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0059381723, y: -0.10391815}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -85,23 +85,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.375, y: 0.02}
-      - {x: 0.114999995, y: 0.34}
-      - {x: -0.095, y: 0.34}
-      - {x: -0.305, y: 0.14999999}
-      - {x: -0.375, y: -0.01}
-      - {x: -0.375, y: -0.12}
-      - {x: -0.36499998, y: -0.17999999}
-      - {x: -0.295, y: -0.25}
-      - {x: -0.195, y: -0.26999998}
-      - {x: -0.074999996, y: -0.38}
-      - {x: 0.015, y: -0.38}
-      - {x: 0.065, y: -0.35999998}
-      - {x: 0.255, y: -0.26}
-      - {x: 0.36499998, y: -0.17999999}
-      - {x: 0.375, y: -0.14999999}
+  serializedVersion: 2
+  m_Size: {x: 0.66686535, y: 0.26713043}
+  m_EdgeRadius: 0
 --- !u!114 &114261680532224086
 MonoBehaviour:
   m_ObjectHideFlags: 1

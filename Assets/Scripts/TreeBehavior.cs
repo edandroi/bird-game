@@ -5,7 +5,6 @@ using UnityEngine.Timeline;
 
 public class TreeBehavior : MonoBehaviour
 {
-	
 	SpriteRenderer _playerSprite;
 	private SpriteRenderer m_SpriteRenderer;
 	private SpriteRenderer b_SpriteRenderer;
@@ -24,8 +23,6 @@ public class TreeBehavior : MonoBehaviour
 		}
 	}
 
-	
-	
 	void Update ()
 	{
 		speed = Services.FlightSpeed.flightSpeed;
