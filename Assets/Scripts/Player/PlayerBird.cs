@@ -29,6 +29,8 @@ public class PlayerBird : MonoBehaviour
 	private float degree;
 	private float angle;
 
+	private float currentPos;
+	private float previousPos;
 	void Start () 
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -96,20 +98,72 @@ public class PlayerBird : MonoBehaviour
 
 	void PlayerRotation()
 	{
+		float rotationSpeed = 1/ (2 * 1 / Services.FlightSpeed.PlayerFlightSpeed());
+	//	Debug.Log(rotationSpeed);
+	//	Vector3 maxScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
+	//	Vector3 minScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, 2,0));
+		
+		currentPos = transform.position.y;
+		if (currentPos >= previousPos)
+		{
+			if (transform.position.y <= 4.5f)
+			{
+				degree = 35f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime * rotationSpeed);
+			}
+			else
+			{
+				degree = 0f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime * rotationSpeed);
+			}
+		} 
+		else{
+			if (transform.position.y >= -4.5f)
+			{
+				degree = -45f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+			else
+			{
+				degree = 0f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+		}
+
+		previousPos = currentPos;
+	}
+
+	void MoveableArea()
+	{
+		Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+		Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+ 
+		transform.position = new Vector3(Mathf.Clamp(transform.position.x, minScreenBounds.x + 1, maxScreenBounds.x - 1),Mathf.Clamp(transform.position.y, minScreenBounds.y + 1, maxScreenBounds.y - 1), transform.position.z);
+	}
+	
+	
+	void PlayerRotation2()
+	{
+		currentPos = transform.position.y;
+		
 		if (Services.FlightSpeed.PlayerFlightSpeed() > 11)
 		{	
-				if (transform.position.y <= 2)
-				{
-					degree = 35f;
-					angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
-					transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
-				}
-				else
-				{
-					degree = 0f;
-					angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
-					transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
-				}
+			if (transform.position.y <= 2)
+			{
+				degree = 35f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+			else
+			{
+				degree = 0f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
 		}
 		if (Services.FlightSpeed.PlayerFlightSpeed() < 10)
 		{			
@@ -126,14 +180,6 @@ public class PlayerBird : MonoBehaviour
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 			}
 		}
-	}
-
-	void MoveableArea()
-	{
-		Vector3 minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
-		Vector3 maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
- 
-		transform.position = new Vector3(Mathf.Clamp(transform.position.x, minScreenBounds.x + 1, maxScreenBounds.x - 1),Mathf.Clamp(transform.position.y, minScreenBounds.y + 1, maxScreenBounds.y - 1), transform.position.z);
 	}
 	
 }

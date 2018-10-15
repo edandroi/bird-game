@@ -41,14 +41,7 @@ public class TreeBehavior : MonoBehaviour
 	
 	
 	private void OnTriggerEnter2D(Collider2D other)
-	{
-		//CHANGE COLOR TO PLAYER'S COLOR
-		if (other.gameObject.CompareTag("Player"))
-		{
-			m_SpriteRenderer.color = _playerSprite.color;
-		}
-		
-		
+	{		
 		//KILLZONE
 		if (other.gameObject.tag == "killzone")
 		{

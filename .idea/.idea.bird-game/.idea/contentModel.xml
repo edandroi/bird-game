@@ -60,7 +60,6 @@
           <e p="HealthBar.cs" t="Include" />
           <e p="LookToMouse.cs" t="Include" />
           <e p="Managers&amp;Controllers" t="Include">
-            <e p="AnimationController.cs" t="Include" />
             <e p="AudioManager.cs" t="Include" />
             <e p="BulletManager.cs" t="Include" />
             <e p="ColorManager.cs" t="Include" />

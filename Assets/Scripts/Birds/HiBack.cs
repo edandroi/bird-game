@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HiBack : MonoBehaviour {
-
-	void SayHiBack()
+public class HiBack : MonoBehaviour
+{
+	
+	public void SayHiBack()
 	{
-		Services.FeedbackAnimations.InstantiateVoiceLines(transform.position, transform.rotation);
+		Services.FeedbackAnimations.BirdReactionAni(gameObject);
 		Services.AudioManager.BirdSaysHi();
-		Debug.Log("Hi Player Bird!");
 	}
+
 }

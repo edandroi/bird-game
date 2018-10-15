@@ -17,12 +17,10 @@ public class DrawLine : MonoBehaviour
 	{
 		transform.rotation = Services.PlayerBird.transform.rotation;
 		Vector2 direction = transform.right*30;
-		playerPosition = Services.PlayerBird.transform.position;
+		playerPosition = Services.PlayerBird.transform.position + new Vector3(0, -0.1f, 0);
 		raycastDir = playerPosition + direction;
 
 		m_LineRenderer.SetPosition(0, playerPosition);
 		m_LineRenderer.SetPosition(1, raycastDir);
-		
-
 	}
 }

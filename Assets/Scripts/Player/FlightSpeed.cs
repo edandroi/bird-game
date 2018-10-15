@@ -33,6 +33,10 @@ public class FlightSpeed : MonoBehaviour {
 
 	private float direction;
 
+	private float moveTreshhold;
+
+	private float timer;
+
 	void Update()
 	{
 		mousePos = Input.mousePosition;
@@ -41,11 +45,11 @@ public class FlightSpeed : MonoBehaviour {
 		
 		CalculateDirections();
 		CalculateFlightSpeed();
-		
-		
+
 		lastPos = currentPos;
 		moveUpPre = moveUpNow;
-
+		timer = flightSpeed / 3;
+		
 //		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
 	}
 
@@ -54,7 +58,9 @@ public class FlightSpeed : MonoBehaviour {
 	{
 		if (mousePos.y < flapRangeMax && mousePos.y > flapRangeMin)
 		{
-			if ((currentPos.y - lastPos.y) > 0) // moving up
+			
+			moveTreshhold = currentPos.y - lastPos.y;
+			if ((moveTreshhold) > 0) // moving up
 			{
 				moveUpNow = true;
 			}
@@ -79,11 +85,15 @@ public class FlightSpeed : MonoBehaviour {
 						flightSpeed += speedUp;
 						speedUp += speedUpEase;
 					}
+					else
+					{
+						flightSpeed = maxSpeed;
+					}
 				}
 			}
 		
 			if (moveUpNow == moveUpPre)
-			{
+			{				
 				if (flightSpeed > minSpeed)
 				{
 					if (slowDown < slowDownMax)
@@ -91,15 +101,41 @@ public class FlightSpeed : MonoBehaviour {
 						flightSpeed -= slowDown;
 						slowDown += slowDownEase;
 					}
-	
 					else
 					{
 						flightSpeed -= slowDownMax;
 					}
 				}
+				else
+				{
+					flightSpeed = minSpeed;
+				}
 			}
-
 	}
+
+	/*
+	private IEnumerator SlowDown()
+	{
+		timer -= Time.deltaTime;
+		if (flightSpeed > minSpeed)
+		{
+			if (timer <= 0)
+			{
+				if (slowDown < slowDownMax)
+				{
+					flightSpeed -= slowDown;
+					slowDown += slowDownEase;
+					yield return null;
+				}
+				else
+				{
+					flightSpeed -= slowDownMax;
+					yield return null;
+				}
+			}
+		}
+	}
+	*/
 
 	// BOOLS
 	public bool MovingUp()
@@ -111,6 +147,11 @@ public class FlightSpeed : MonoBehaviour {
 	public float PlayerFlightSpeed()
 	{
 		return flightSpeed;
+	}
+
+	public float MoveDirection()
+	{
+		return moveTreshhold;
 	}
 }
                                                                                                                                                                                                                                                                                                                                                                                                                                             

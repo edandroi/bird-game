@@ -70,7 +70,6 @@
     <Compile Include="Assets\Scripts\FollowMouse.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\LookToMouse.cs" />
-    <Compile Include="Assets\Scripts\Managers&amp;Controllers\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\BulletManager.cs" />
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\ColorManager.cs" />
