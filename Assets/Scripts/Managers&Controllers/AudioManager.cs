@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour {
 		source = GetComponent<AudioSource>();
 		
 		// Player AudioClips
-		playerHiSound = Resources.Load<AudioClip>("Sounds/Birds/violent-green-swallow-1");
+		playerHiSound = Resources.Load<AudioClip>("Sounds/Birds/rufousAntpitta");
 		
 		// Birds AudioClips
 		blueJay = Resources.Load<AudioClip>("Sounds/Birds/blueJay1");

@@ -36,6 +36,7 @@ public class FlightSpeed : MonoBehaviour {
 	private float moveTreshhold;
 
 	private float timer;
+	public AnimationCurve m_AnimationCurve;
 
 	void Update()
 	{
@@ -48,7 +49,6 @@ public class FlightSpeed : MonoBehaviour {
 
 		lastPos = currentPos;
 		moveUpPre = moveUpNow;
-		timer = flightSpeed / 3;
 		
 //		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
 	}
@@ -82,8 +82,10 @@ public class FlightSpeed : MonoBehaviour {
 				if (Input.GetMouseButton(0)){
 					if (flightSpeed < maxSpeed)
 					{
+						speedUp = m_AnimationCurve.Evaluate(flightSpeed);
 						flightSpeed += speedUp;
-						speedUp += speedUpEase;
+						//speedUp += speedUpEase;
+						Debug.Log(speedUp);
 					}
 					else
 					{

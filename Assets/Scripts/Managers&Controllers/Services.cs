@@ -14,4 +14,5 @@ public static class Services
     public static ColorManager ColorManager;
     public static AudioManager AudioManager;
     public static FeedbackAnimations FeedbackAnimations;
+    public static BirdManager BirdManager;
 }
