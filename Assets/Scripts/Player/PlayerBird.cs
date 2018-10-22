@@ -9,12 +9,7 @@ public class PlayerBird : MonoBehaviour
 	// Sprites
 	public Sprite birdUp;
 	public Sprite birdDown;
-	
-	//Keys for changing colors
-	public KeyCode c_Btn1;
-	public KeyCode c_Btn2;
-	public KeyCode c_Btn3;
-	
+
 	public Color32 pickedColor;
 	
 	private SpriteRenderer m_SpriteRenderer;
@@ -31,47 +26,79 @@ public class PlayerBird : MonoBehaviour
 
 	private float currentPos;
 	private float previousPos;
+
+	private Animator m_Animator;
+
+	private float currentYPos;
+	private float preYPos = 0;
+	
 	void Start () 
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
-		pickedColor = m_SpriteRenderer.color;
+		m_Animator = GetComponent<Animator>();
 	}
 	
 
 	void Update ()
 	{
 		MoveableArea(); // The screen space that the player is allowed to move
-//		ChangePlayerColor(); // Controls how players can change color
 		PlayerMovement(); // Controls how the player moves
+		PlayerAnimation(); // Player Animation based on mouse movement
 		PlayerRotation(); // Controls player rotation
 	}
 
 	
 	// FUNCTIONS
-	void ChangePlayerColor()
+
+	void PlayerAnimation()
 	{
-		m_SpriteRenderer.color = pickedColor;
+		currentPos = transform.position.y;
+		float movingDir = currentPos - preYPos;
 		
-		// Pick Color
-		if (Input.GetKeyDown(c_Btn1))
+		if(Input.GetMouseButton(0))
 		{
-			pickedColor = Services.ColorManager.C_pink;
+			//Change Sprites
+			if (Input.GetAxis("Mouse Y") > 0)
+			{
+				m_SpriteRenderer.sprite = birdDown;
+			}
+			
+			if (Input.GetAxis("Mouse Y") <= 0)
+			{
+				m_SpriteRenderer.sprite = birdUp;
+			}
+			
+			/*
+			//Change Sprites
+			if (Input.GetAxis("Mouse Y") > 0)
+			{
+				m_Animator.SetBool("isGoingDown", true);
+				m_Animator.SetBool("isGoingUp", false);
+			}
+			
+			if (Input.GetAxis("Mouse Y") <= 0)
+			{
+				m_Animator.SetBool("isGoingDown", false);
+				m_Animator.SetBool("isGoingUp", true);
+			}
+			*/
+		} else if (movingDir > 0)
+		{
+			m_SpriteRenderer.sprite = birdDown;
+		}
+		else
+		{
+			m_SpriteRenderer.sprite = birdUp;
 		}
 
-		if (Input.GetKeyDown(c_Btn2))
-		{
-			pickedColor = Services.ColorManager.C_blue;
-		}
-
-		if (Input.GetKeyDown(c_Btn3))
-		{
-			pickedColor = Services.ColorManager.C_yellow;
-		}
+		preYPos = currentPos;
 	}
-	
+
 	void PlayerMovement()
 	{
-		if(Input.GetMouseButton(0)){
+		/*
+		if(Input.GetMouseButton(0))
+		{
 			//Change Sprites
 			if (Input.GetAxis("Mouse Y") > 0)
 			{
@@ -83,6 +110,7 @@ public class PlayerBird : MonoBehaviour
 				m_SpriteRenderer.sprite = birdUp;
 			}
 		}
+		*/
 		
 		//Move Player Up OR Down
 		if (Services.FlightSpeed.PlayerFlightSpeed() > 10)
