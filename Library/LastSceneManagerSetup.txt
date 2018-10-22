@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Magic Woods.unity
+- path: Assets/Scenes/Magic Woods - Gesture Test.unity
   isLoaded: 1
   isActive: 1

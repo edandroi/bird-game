@@ -75,6 +75,7 @@
             <e p="FlightSpeed.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />
             <e p="SayHiToBirds.cs" t="Include" />
+            <e p="SayHiToBirdsGesture.cs" t="Include" />
           </e>
           <e p="RotationLimit.cs" t="Include" />
           <e p="SphereCaster.cs" t="Include" />

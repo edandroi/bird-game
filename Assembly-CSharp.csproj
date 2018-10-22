@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Player\FlightSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirds.cs" />
+    <Compile Include="Assets\Scripts\Player\SayHiToBirdsGesture.cs" />
     <Compile Include="Assets\Scripts\RotationLimit.cs" />
     <Compile Include="Assets\Scripts\SphereCaster.cs" />
     <Compile Include="Assets\Scripts\TreeBehavior.cs" />
