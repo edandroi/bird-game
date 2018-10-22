@@ -20,10 +20,10 @@ public class FlightSpeed : MonoBehaviour {
 	private float turningPointDis;
 
 	public float flightSpeed = 0;
-	public float speedUp;
+	private float speedUp;
 	public float speedUpEase;
 	public float slowDownMax;
-	public float slowDown;
+	private float slowDown;
 	public float slowDownEase;
 	public float maxSpeed;
 	public float minSpeed;
@@ -36,7 +36,8 @@ public class FlightSpeed : MonoBehaviour {
 	private float moveTreshhold;
 
 	private float timer;
-	public AnimationCurve m_AnimationCurve;
+	public AnimationCurve speedUpCurve;
+	public AnimationCurve slowDownCurve;
 
 	void Update()
 	{
@@ -50,7 +51,7 @@ public class FlightSpeed : MonoBehaviour {
 		lastPos = currentPos;
 		moveUpPre = moveUpNow;
 		
-//		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
+		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
 	}
 
 	// FUNCTIONS
@@ -79,13 +80,14 @@ public class FlightSpeed : MonoBehaviour {
 				turningPosLast = turningPosCurrent;
 				turningPosCurrent = currentPos;
 				turningPointDis = Mathf.Abs(turningPosCurrent.y - turningPosLast.y);
+
 				if (Input.GetMouseButton(0)){
 					if (flightSpeed < maxSpeed)
 					{
-						speedUp = m_AnimationCurve.Evaluate(flightSpeed);
+						speedUp = speedUpCurve.Evaluate(flightSpeed);
 						flightSpeed += speedUp;
 						//speedUp += speedUpEase;
-						//Debug.Log(speedUp);
+						//Debug.Log("speed up is ="+speedUp);
 					}
 					else
 					{
@@ -100,8 +102,10 @@ public class FlightSpeed : MonoBehaviour {
 				{
 					if (slowDown < slowDownMax)
 					{
-						flightSpeed -= slowDown;
-						slowDown += slowDownEase;
+						slowDown = slowDownCurve.Evaluate(flightSpeed);
+						flightSpeed -= slowDown/2;
+						Debug.Log("slow down is ="+slowDown);
+						//slowDown += slowDownEase;
 					}
 					else
 					{

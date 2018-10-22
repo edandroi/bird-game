@@ -9,8 +9,6 @@ public class PlayerBird : MonoBehaviour
 	// Sprites
 	public Sprite birdUp;
 	public Sprite birdDown;
-
-	public Color32 pickedColor;
 	
 	private SpriteRenderer m_SpriteRenderer;
 	private Color m_NewColor;
@@ -57,6 +55,7 @@ public class PlayerBird : MonoBehaviour
 		
 		if(Input.GetMouseButton(0))
 		{
+			/*
 			//Change Sprites
 			if (Input.GetAxis("Mouse Y") > 0)
 			{
@@ -67,9 +66,9 @@ public class PlayerBird : MonoBehaviour
 			{
 				m_SpriteRenderer.sprite = birdUp;
 			}
+			*/
 			
-			/*
-			//Change Sprites
+		//Change Sprites
 			if (Input.GetAxis("Mouse Y") > 0)
 			{
 				m_Animator.SetBool("isGoingDown", true);
@@ -81,37 +80,23 @@ public class PlayerBird : MonoBehaviour
 				m_Animator.SetBool("isGoingDown", false);
 				m_Animator.SetBool("isGoingUp", true);
 			}
-			*/
-		} else if (movingDir > 0)
+		} 
+		else if (movingDir > 0)
 		{
-			m_SpriteRenderer.sprite = birdDown;
+			m_Animator.SetBool("isGoingDown", true);
+			m_Animator.SetBool("isGoingUp", false);
 		}
 		else
 		{
-			m_SpriteRenderer.sprite = birdUp;
+			m_Animator.SetBool("isGoingDown", false);
+			m_Animator.SetBool("isGoingUp", true);
 		}
 
 		preYPos = currentPos;
 	}
 
 	void PlayerMovement()
-	{
-		/*
-		if(Input.GetMouseButton(0))
-		{
-			//Change Sprites
-			if (Input.GetAxis("Mouse Y") > 0)
-			{
-				m_SpriteRenderer.sprite = birdDown;
-			}
-			
-			if (Input.GetAxis("Mouse Y") <= 0)
-			{
-				m_SpriteRenderer.sprite = birdUp;
-			}
-		}
-		*/
-		
+	{		
 		//Move Player Up OR Down
 		if (Services.FlightSpeed.PlayerFlightSpeed() > 10)
 		{
@@ -120,16 +105,13 @@ public class PlayerBird : MonoBehaviour
 		
 		if ( Services.FlightSpeed.PlayerFlightSpeed() < 9)
 		{
-				transform.position = Vector3.Lerp(transform.position, new Vector3(-11, -7.5f, 0), Time.deltaTime*0.5f);
+			transform.position = Vector3.Lerp(transform.position, new Vector3(-11, -7.5f, 0), Time.deltaTime*0.5f);
 		}
 	}
 
 	void PlayerRotation()
 	{
 		float rotationSpeed = 1/ (2 * 1 / Services.FlightSpeed.PlayerFlightSpeed());
-	//	Debug.Log(rotationSpeed);
-	//	Vector3 maxScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height,0));
-	//	Vector3 minScreenPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, 2,0));
 		
 		currentPos = transform.position.y;
 		if (currentPos >= previousPos)
@@ -147,7 +129,8 @@ public class PlayerBird : MonoBehaviour
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime * rotationSpeed);
 			}
 		} 
-		else{
+		else
+		{
 			if (transform.position.y >= -4.5f)
 			{
 				degree = -45f;
@@ -178,7 +161,7 @@ public class PlayerBird : MonoBehaviour
 	{
 		currentPos = transform.position.y;
 		
-		if (Services.FlightSpeed.PlayerFlightSpeed() > 11)
+		if (Services.FlightSpeed.PlayerFlightSpeed() > 7)
 		{	
 			if (transform.position.y <= 2)
 			{
@@ -193,7 +176,7 @@ public class PlayerBird : MonoBehaviour
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 			}
 		}
-		if (Services.FlightSpeed.PlayerFlightSpeed() < 10)
+		if (Services.FlightSpeed.PlayerFlightSpeed() < 7)
 		{			
 			if (transform.position.y >= -2)
 			{
