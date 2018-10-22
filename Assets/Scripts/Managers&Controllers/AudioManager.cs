@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour {
 	private AudioSource source;
 	private float volLowRange = .5f;
 	private float volHighRange = 1.0f;
+	private float waitForCall = 2;
 
 
 	void Awake ()

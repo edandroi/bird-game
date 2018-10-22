@@ -85,7 +85,7 @@ public class FlightSpeed : MonoBehaviour {
 						speedUp = m_AnimationCurve.Evaluate(flightSpeed);
 						flightSpeed += speedUp;
 						//speedUp += speedUpEase;
-						Debug.Log(speedUp);
+						//Debug.Log(speedUp);
 					}
 					else
 					{

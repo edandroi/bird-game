@@ -28,15 +28,6 @@ public class SayHiToBirds : MonoBehaviour
 			Services.FeedbackAnimations.InstantiateVoiceLines(transform.position, transform.rotation);		
 			Services.AudioManager.PlayerSaysHi();
 
-			/*
-			if (hit.collider != null)
-			{
-				Debug.Log("Raycast working");
-				Debug.Log(hit.collider.gameObject);
-  //				hit.collider.gameObject.GetComponent<HiBack>().SayHiBack();
-			}
-			*/
-
 			if (Physics2D.CircleCast(startPos, circleRadius, direction, distance,m_LayerMask))
 			{
 				StartCoroutine(BirdsSayHiBack(hit));
@@ -47,7 +38,7 @@ public class SayHiToBirds : MonoBehaviour
 	
 	IEnumerator BirdsSayHiBack(RaycastHit2D thisHit)
 	{
-		yield return new WaitForSeconds(0.6f);
+		yield return new WaitForSeconds(0.4f);
 		thisHit.collider.gameObject.GetComponent<HiBack>().SayHiBack();
 	}
 }
