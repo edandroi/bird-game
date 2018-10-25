@@ -22,7 +22,8 @@ public class SayHiToBirds : MonoBehaviour
 		Vector2 raycasted = startPos + direction;
 		Debug.DrawLine(transform.position, raycasted, Color.green);
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, Mathf.Infinity, LayerMask.GetMask("Birds"));
-		if (Input.GetMouseButtonDown(1))
+
+		if (Input.GetMouseButtonUp(1))
 		{
 			//Visual and Audio Feedback
 			Services.FeedbackAnimations.InstantiateVoiceLines(transform.position, transform.rotation);		

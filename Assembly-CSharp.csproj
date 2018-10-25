@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BulletBehavior.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\CameraShake.cs" />
+    <Compile Include="Assets\Scripts\DisplayPlayerDirection.cs" />
     <Compile Include="Assets\Scripts\FeedbackAnimations.cs" />
     <Compile Include="Assets\Scripts\FollowMouse.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />

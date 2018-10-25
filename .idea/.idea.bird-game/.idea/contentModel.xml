@@ -55,6 +55,7 @@
           <e p="BulletBehavior.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
           <e p="CameraShake.cs" t="Include" />
+          <e p="DisplayPlayerDirection.cs" t="Include" />
           <e p="FeedbackAnimations.cs" t="Include" />
           <e p="FollowMouse.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
