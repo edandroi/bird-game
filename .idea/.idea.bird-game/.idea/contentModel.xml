@@ -52,13 +52,12 @@
           <e p="Birds" t="Include">
             <e p="HiBack.cs" t="Include" />
           </e>
-          <e p="BulletBehavior.cs" t="Include" />
           <e p="CameraControl.cs" t="Include" />
           <e p="CameraShake.cs" t="Include" />
-          <e p="DisplayPlayerDirection.cs" t="Include" />
           <e p="FeedbackAnimations.cs" t="Include" />
           <e p="FollowMouse.cs" t="Include" />
           <e p="HealthBar.cs" t="Include" />
+          <e p="LerpCenter.cs" t="Include" />
           <e p="LookToMouse.cs" t="Include" />
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />
@@ -72,6 +71,7 @@
           </e>
           <e p="Player" t="Include">
             <e p="DestroyAnimation.cs" t="Include" />
+            <e p="DisplayPlayerDirection.cs" t="Include" />
             <e p="DrawLine.cs" t="Include" />
             <e p="FlightSpeed.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />

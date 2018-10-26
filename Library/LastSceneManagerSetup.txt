@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Magic Woods.unity
+- path: Assets/Scenes/Bird Game.unity
   isLoaded: 1
   isActive: 1
