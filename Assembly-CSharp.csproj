@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GabeCam.cs" />
     <Compile Include="Assets\PDollar\Scripts\Demo.cs" />
     <Compile Include="Assets\PDollar\Scripts\DemoOct7.cs" />
     <Compile Include="Assets\PDollar\Scripts\PDollarGestureRecognizer\Geometry.cs" />
@@ -82,11 +83,14 @@
     <Compile Include="Assets\Scripts\Player\DisplayPlayerDirection.cs" />
     <Compile Include="Assets\Scripts\Player\DrawLine.cs" />
     <Compile Include="Assets\Scripts\Player\FlightSpeed.cs" />
+    <Compile Include="Assets\Scripts\Player\GabeFlap.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirds.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirdsGesture.cs" />
     <Compile Include="Assets\Scripts\RotationLimit.cs" />
     <Compile Include="Assets\Scripts\SphereCaster.cs" />
+    <Compile Include="Assets\Scripts\Test Scripts\CircleRotation.cs" />
+    <Compile Include="Assets\Scripts\Test Scripts\Wiggle.cs" />
     <Compile Include="Assets\Scripts\TreeBehavior.cs" />
     <Compile Include="Assets\Scripts\TreeKillzone.cs" />
     <None Include="Assets\PDollar\Resources\GestureSet\10-stylus-MEDIUM\10-stylus-medium-asterisk-01.xml" />
@@ -351,6 +355,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{73AE8CCE-577F-06D0-0E34-68FA66261592}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

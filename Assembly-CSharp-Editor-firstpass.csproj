@@ -55,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\Editor\JetBrains\Unity3DRider.cs" />
+    <Compile Include="Assets\Plugins\SuperPivot\Editor\EditorAPI.cs" />
+    <Compile Include="Assets\Plugins\SuperPivot\Editor\TargetWrapper.cs" />
+    <Compile Include="Assets\Plugins\SuperPivot\Editor\TransformCustomInspector.cs" />
+    <Compile Include="Assets\Plugins\SuperPivot\Editor\Window.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/edanurkuntman/Documents/NYU/Classes/Project Studio/bird-game/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -349,6 +353,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>/Applications/Unity/Hub/Editor/2018.2.5f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{73AE8CCE-577F-06D0-0E34-68FA66261592}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

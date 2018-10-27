@@ -51,7 +51,7 @@ public class FlightSpeed : MonoBehaviour {
 		lastPos = currentPos;
 		moveUpPre = moveUpNow;
 		
-		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
+//		Debug.Log("fligth speed is " + Services.FlightSpeed.flightSpeed);
 	}
 
 	// FUNCTIONS
@@ -104,7 +104,7 @@ public class FlightSpeed : MonoBehaviour {
 					{
 						slowDown = slowDownCurve.Evaluate(flightSpeed);
 						flightSpeed -= slowDown/2;
-						Debug.Log("slow down is ="+slowDown);
+//						Debug.Log("slow down is ="+slowDown);
 						//slowDown += slowDownEase;
 					}
 					else
