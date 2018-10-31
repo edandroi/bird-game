@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Player\DrawLine.cs" />
     <Compile Include="Assets\Scripts\Player\FlightSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\GabeFlap.cs" />
+    <Compile Include="Assets\Scripts\Player\GabeFlap1.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirds.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirdsGesture.cs" />

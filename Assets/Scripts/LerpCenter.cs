@@ -24,6 +24,8 @@ public class LerpCenter : MonoBehaviour
 	}
 	
 	void Update () {
+	WeirdRotation();
+		/*
 		transform.position = Vector3.Lerp(transform.position, lerpObj.transform.position, Time.deltaTime*lerpSpeed);
 		currentRot = transform.eulerAngles.z;
 		playerAngle = Services.PlayerBird.transform.eulerAngles.z;
@@ -48,12 +50,7 @@ public class LerpCenter : MonoBehaviour
 				transform.eulerAngles = new Vector3(0, 0, angle);
 			}
 		}
-		
-//		if (Services.PlayerBird.transform.eulerAngles.z < 350 && Services.PlayerBird.transform.eulerAngles.z > 60)
-//		{
-//			angle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
-//			transform.eulerAngles = new Vector3(0, 0, angle*1.4f);
-//		}
+	*/
 		
 	
 	}

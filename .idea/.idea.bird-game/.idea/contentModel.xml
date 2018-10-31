@@ -88,6 +88,7 @@
             <e p="DrawLine.cs" t="Include" />
             <e p="FlightSpeed.cs" t="Include" />
             <e p="GabeFlap.cs" t="Include" />
+            <e p="GabeFlap1.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />
