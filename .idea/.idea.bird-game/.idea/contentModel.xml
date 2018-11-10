@@ -6,7 +6,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="GabeCam.cs" t="Include" />
         <e p="PDollar" t="Include">
           <e p="Resources" t="Include">
             <e p="GestureSet" t="Include">
@@ -65,17 +64,22 @@
           <e p="Birds" t="Include">
             <e p="HiBack.cs" t="Include" />
           </e>
-          <e p="CameraControl.cs" t="Include" />
-          <e p="CameraShake.cs" t="Include" />
-          <e p="FeedbackAnimations.cs" t="Include" />
-          <e p="FollowMouse.cs" t="Include" />
-          <e p="HealthBar.cs" t="Include" />
-          <e p="LerpCenter.cs" t="Include" />
-          <e p="LookToMouse.cs" t="Include" />
+          <e p="CloudBehavior.cs" t="Include" />
+          <e p="CloudsBackground.cs" t="Include" />
+          <e p="General" t="Include">
+            <e p="CameraShake.cs" t="Include" />
+            <e p="FeedbackAnimations.cs" t="Include" />
+            <e p="FollowMouse.cs" t="Include" />
+            <e p="GabeCam.cs" t="Include" />
+            <e p="LerpCenter.cs" t="Include" />
+            <e p="LookToMouse.cs" t="Include" />
+          </e>
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />
             <e p="BirdManager.cs" t="Include" />
             <e p="BulletManager.cs" t="Include" />
+            <e p="CameraControl.cs" t="Include" />
+            <e p="CloudManager.cs" t="Include" />
             <e p="ColorManager.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
@@ -89,6 +93,7 @@
             <e p="FlightSpeed.cs" t="Include" />
             <e p="GabeFlap.cs" t="Include" />
             <e p="GabeFlap1.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />

@@ -12,9 +12,6 @@ public class PlayerBird : MonoBehaviour
 	
 	private SpriteRenderer m_SpriteRenderer;
 	private Color m_NewColor;
-	
-	// player health
-	public float playerHealth;
 
 	private float flightSpeedNow;
 	private float flightSpeedPre;

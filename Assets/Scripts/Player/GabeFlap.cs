@@ -22,10 +22,14 @@ public class GabeFlap : MonoBehaviour
 	private float angle;
 	private float currentYPos;
 	private float previousYPos = 0;
-	private float rotationSpeed;
+	public float rotationSpeed;
+	public float velocityMaxY;
+	public float velocityMaxX;
+	private Vector3 currentRotation;
 
-	void Start () {
-		//gravity=new float[3];
+
+	void Start () 
+	{
 		m_Animator = GetComponent<Animator>();
 	}
 
@@ -33,7 +37,9 @@ public class GabeFlap : MonoBehaviour
 	{
 		velocity += Vector2.down*(gravity[flapState]);
 		transform.position += (Vector3)velocity;
-		//transform.eulerAngles = new Vector3(0,0,Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x));
+		
+//		Debug.Log("current velocity is "+velocity);
+
 		BirdRotation();
 	}
 
@@ -41,36 +47,63 @@ public class GabeFlap : MonoBehaviour
 	{
 		InputFlying();
 		Flapping();
-		
-		Debug.Log("velocity is "+velocity);
 	}
 
+	
+	
 	void BirdRotation()
 	{
-		rotationSpeed = 2;
+		currentYPos = transform.position.y;
+		float direction = currentYPos - previousYPos;
 		
-		currentYPos = velocity.y;
-		float dir = currentYPos - previousYPos;
-		if (dir >= 0 && flapState != 1)
-		{
-			degree = 35f;
-			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime * rotationSpeed);
-		} 
-		else if (dir < 0 && flapState != 1)
-		{
-			degree = -45f;
-			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
-		}
-		else
+		if (flapState == 1) // mid state
 		{
 			degree = 0f;
 			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 		}
+		else if (flapState == 0) // Going Down State
+		{
+//			transform.eulerAngles = new Vector3(0,0,Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x));
 
+			if (direction > 0) // Bird is moving up
+			{
+				Vector3 newAngle = new Vector3(0,0,Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x));
+				transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, newAngle, Time.fixedDeltaTime/2);
+				currentRotation = transform.eulerAngles;
+				currentRotation.z = Mathf.Clamp(currentRotation.z, -35, 35);
+				transform.eulerAngles = currentRotation;
+			}
+			else
+			{
+				degree = -35f;
+				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, degree, Time.deltaTime));
+			}
+		}
+		else // flapState == 2, bird is going up
+		{
+			if (direction > 0) // Bird is moving up
+			{
+				Vector3 newAngle = new Vector3(0,0,Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x));
+				transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, newAngle, Time.fixedDeltaTime/2);
+				currentRotation = transform.eulerAngles;
+				currentRotation.z = Mathf.Clamp(currentRotation.z, -35, 35);
+				transform.eulerAngles = currentRotation;
+			}
+			else
+			{
+				degree = 35f;
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+			}
+		}
 		previousYPos = currentYPos;
+		/*
+		currentRotation = transform.eulerAngles;
+		currentRotation.z = Mathf.Clamp(currentRotation.z, -45, 35);
+		transform.eulerAngles = currentRotation;
+		*/
+
 
 	}
 
@@ -84,7 +117,21 @@ public class GabeFlap : MonoBehaviour
 			if (mouseChange < 0 && flapState > 0) // if we're going down and if we weren't down already
 			{
 				velocity += flapForce;
+
+				if (velocity.x >= velocityMaxX)
+				{
+					velocity.x = velocityMaxX;
+				}
+
+				if (velocity.y >= velocityMaxY)
+				{
+					velocity.y = velocityMaxY;
+				}
 			}
+			
+			// 0 == going down
+			// 1 == mid state
+			// 2 == going up
 			flapState += (int)Mathf.Sign(mouseChange);
 			flapState = Mathf.Clamp(flapState, 0, 2);
 			
@@ -92,12 +139,12 @@ public class GabeFlap : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("I'm dragging");
 			velocity += Vector2.left * drag;
 		}
 	}
 
-	void Flapping()
+	// Animation States
+	void Flapping() 
 	{
 		switch (flapState)
 		{
@@ -116,6 +163,43 @@ public class GabeFlap : MonoBehaviour
 				m_Animator.SetBool("isGoingMiddle", false);
 				m_Animator.SetBool("isGoingUp", true);
 				break;
+		}
+	}
+
+	
+	
+	void BirdRotation2() // Bu calismiyor cunku hiza gore degil animasyona gore donduruyor
+	{
+		if (flapState == 1){
+			degree = 0f;
+			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+		}
+
+		if (flapState == 0)
+		{
+			degree = -35f;
+			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+		}
+
+		if (flapState == 2)
+		{
+			degree = 35f;
+			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+		}
+	}
+
+	public bool floatingBird()
+	{
+		if (flapState == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

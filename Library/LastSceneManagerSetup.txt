@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Bird Game.unity
+- path: Assets/Scenes/Bird Game Main.unity
   isLoaded: 1
   isActive: 1

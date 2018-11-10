@@ -19,7 +19,8 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1044745319086676}
   m_IsPrefabAsset: 0
@@ -32,9 +33,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4410493000056088}
   - component: {fileID: 212461009132038434}
-  - component: {fileID: 114562588402480974}
   - component: {fileID: 58721053833644828}
   - component: {fileID: 50295632817115686}
+  - component: {fileID: 114758788113539360}
   m_Layer: 0
   m_Name: cloud2
   m_TagString: Untagged
@@ -90,7 +91,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.76
---- !u!114 &114562588402480974
+--- !u!114 &114758788113539360
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1044745319086676}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a121e39cc2f38472d905ee1a5b0527e0, type: 3}
+  m_Script: {fileID: 11500000, guid: f090a85bfe9a349e98161d75a2675b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212461009132038434
