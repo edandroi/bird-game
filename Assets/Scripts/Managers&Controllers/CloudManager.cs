@@ -39,7 +39,22 @@ public class CloudManager : MonoBehaviour
 		if (timer < 0)
 		{
 			Vector3 spawnPosition = Vector3.zero;
+			Vector3 playerPosition = Services.Player.transform.position;
 			
+			if (Services.Player.flightDirection() > 0)
+			{
+				spawnPosition = new Vector3
+					(Random.Range(playerPosition.x+20, playerPosition.x+50), Random.Range(playerPosition.y+40, playerPosition.y+60), Random.Range(playerPosition.z-10, playerPosition.z+10));
+			}
+			else
+			{
+				spawnPosition = new Vector3
+					(playerPosition.x + 60, Random.Range(playerPosition.y+20, playerPosition.y+50), Random.Range(playerPosition.z-10, playerPosition.z+10));
+			}
+
+//			playerPosition = Camera.main.ScreenToWorldPoint
+//				(Services.Player.transform.position);
+			/*
 			switch (Random.Range(0, numOfClouds))
 			{
 				case 0:
@@ -58,6 +73,8 @@ public class CloudManager : MonoBehaviour
 					break;
 					
 			}
+			*/
+			Instantiate(cloud1,spawnPosition,Quaternion.identity);
 			timer = Random.Range(1f, 4f);
 		}
 	}

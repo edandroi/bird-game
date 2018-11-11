@@ -67,6 +67,7 @@
           <e p="CloudBehavior.cs" t="Include" />
           <e p="CloudsBackground.cs" t="Include" />
           <e p="General" t="Include">
+            <e p="CamBehavior.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
             <e p="FeedbackAnimations.cs" t="Include" />
             <e p="FollowMouse.cs" t="Include" />
@@ -94,6 +95,7 @@
             <e p="GabeFlap.cs" t="Include" />
             <e p="GabeFlap1.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+            <e p="Player1.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />

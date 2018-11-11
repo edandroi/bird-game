@@ -32,8 +32,10 @@ public class GameController : MonoBehaviour {
 		var birdManagerGameObject = new GameObject("Bird Manager");
 		Services.BirdManager = birdManagerGameObject.AddComponent<BirdManager>();
 		
-		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
-		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();
+		Services.Player = GameObject.Find("Player").GetComponent<Player>();
+		
+//		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
+//		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();
 		Services.FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
 	}
 }

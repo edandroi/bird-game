@@ -10,6 +10,7 @@ public static class Services
     public static BulletManager BulletManager;
     public static FlightSpeed FlightSpeed;
     public static PlayerBird PlayerBird;
+    public static Player Player;
     public static TreeManager TreeManager;
     public static ColorManager ColorManager;
     public static AudioManager AudioManager;

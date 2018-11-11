@@ -14,15 +14,25 @@ public class Player : MonoBehaviour {
 	private float gravityPre = 0;
 	public float addGravity;
 	private float midStateTimer = 5f;
+	private bool gliding = false;
 	
 	// Flapping Variables
 	public int flapState;
+	private int flapStateNow;
 	private float mouseChange;
 	private float mousePosPre;
 	public float flapThreshhold;
 	public Vector2 flapForce;
 	private float noFlapTimer = 0;
 	private float flapTimer = 0;
+	private float direction;
+	
+	// Diving Variables
+	private float timeLeftForDiving = 1f;
+	public float diveTreshhold;
+	private bool divingNow = false;
+	private bool timeToDive = false;
+	float mouseChangeTotal = 0;
 
 	public float drag = 0.01f;
 	private float degree;
@@ -49,7 +59,8 @@ public class Player : MonoBehaviour {
 	void Update () {
 		InputFlying();
 		Flapping();
-		Debug.Log(velocity);
+		Diving();
+//		Debug.Log(velocity);
 	}
 	
 	// Get Flying Input
@@ -58,6 +69,7 @@ public class Player : MonoBehaviour {
 		float mouseY = Camera.main.ScreenToViewportPoint(Input.mousePosition).y;
 		mouseChange += mouseY - mousePosPre;
 		mousePosPre = mouseY;
+//		Debug.Log("Input Flying: mouse change is "+ mouseChange);
 		
 		if (Mathf.Abs(mouseChange) > flapThreshhold) // we are moving
 		{
@@ -66,8 +78,9 @@ public class Player : MonoBehaviour {
 			// flapstate should change
 			
 			// we get faster
-			if (mouseChange < 0 && flapState > 0) // if we're going down and if we weren't down already
+			if (mouseChange < 0 && flapState > 1) // if we're going down and if we weren't down already
 			{
+				gliding = false;
 				noFlapTimer = 0;
 				velocity += flapForce;
 
@@ -86,11 +99,16 @@ public class Player : MonoBehaviour {
 			gravityNow -= addGravity;
 			gravityNow = Mathf.Clamp(gravityNow, gravity[0], gravity[1]);
 
+			// -1 == dive
 			// 0 == going down
 			// 1 == mid state
 			// 2 == going up
-			flapState += (int)Mathf.Sign(mouseChange);
-			flapState = Mathf.Clamp(flapState, 0, 2);
+
+			if (divingNow == false)
+			{
+				flapState += (int)Mathf.Sign(mouseChange);
+				flapState = Mathf.Clamp(flapState, 0, 2);
+			}
 			
 			mouseChange = 0;
 		}
@@ -103,24 +121,81 @@ public class Player : MonoBehaviour {
 			velocity += Vector2.left * drag;
 			
 			// if we stay on midstate
-			if (flapState == 1)
+			if (flapState == 2)
 			{
-				midStateTimer -= Time.deltaTime;
-
-				if (midStateTimer > 0)
+				if (noFlapTimer > 1f)
 				{
-					gravityNow = 0.0005f;
-					drag = 0;
+					gliding = true;
 				}
-				else
+
+				if (noFlapTimer > 1.5f)
 				{
-					gravityNow -= addGravity;
-					flapState = Mathf.Clamp(flapState, 0, 2);
+					midStateTimer -= Time.deltaTime;
+
+					if (midStateTimer > 0)
+					{
+						gravityNow = 0.0005f;
+						velocity.y = Mathf.Clamp(velocity.y, 0, 0.2f);
+						drag = 0;
+					}
+					else
+					{
+						gliding = false;
+						gravityNow -= addGravity;
+						flapState = 0;
+						midStateTimer = 5f;
+					}
 				}
 			}
 		}
-
 		gravityPre = gravityNow;
+	}
+	
+	void Diving()
+	{
+		if (mouseChange > 0 && flapState > 0) // if we are going up and 
+		{
+			timeToDive = true;	
+		}
+		
+		if (timeToDive)
+		{
+			
+			timeLeftForDiving -= Time.deltaTime;
+			if (timeLeftForDiving > 0)
+			{
+				if (mouseChange < 0)
+				{
+					mouseChangeTotal += mouseChange;
+					Debug.Log("mouse change total is "+Mathf.Abs(mouseChangeTotal));
+		
+					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold)
+					{
+						Debug.Log("Diving Now!");
+						divingNow = true;
+						flapState = -1;
+					}
+				}
+			}
+			else
+			{
+				timeToDive = false;
+			}
+			
+		}
+		else
+		{
+			timeLeftForDiving = 2f;
+			mouseChangeTotal = 0;
+			Debug.Log("timer renewed");
+		}
+
+		if (divingNow == true && mouseChange > 0)
+		{
+			divingNow = false;
+			mouseChangeTotal = 0;
+//			Debug.Log("mouse change total is "+mouseChangeTotal);
+		}
 	}
 	
 	// Animation States
@@ -157,6 +232,12 @@ public class Player : MonoBehaviour {
 			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 		}
+		else if (flapState == -1) // dive
+		{
+			degree = -60f;
+			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+		}
 		else 
 		{
 			
@@ -165,52 +246,28 @@ public class Player : MonoBehaviour {
 				float newAngle = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
 				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, newAngle, 0.5f));
 				currentRotation = transform.eulerAngles;
-				currentRotation.z = Mathf.Clamp(currentRotation.z, -35, 35);
+				currentRotation.z = Mathf.Clamp(currentRotation.z, -7, 7);
 				transform.eulerAngles = currentRotation;
 			}
 			else
 			{
 				if (noFlapTimer > 1.5)
 				{
-				degree = -35f;
+				degree = -7f;
 				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, degree, Time.deltaTime));
 				}
 			}			
 		}
 		previousYPos = currentYPos;
 	}
-	
-	void BirdRotation2()
+
+	public float flightDirection()
 	{
-		currentYPos = transform.position.y;
-		float direction = currentYPos - previousYPos;
-		
-		if (flapState == 1) // mid state
-		{
-			degree = 0f;
-			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
-		}
-		else 
-		{
-			
-			if (gravityPre < gravityNow)
-			{
-				float newAngle = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
-				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, newAngle, 0.005f));
-				currentRotation = transform.eulerAngles;
-				currentRotation.z = Mathf.Clamp(currentRotation.z, -35, 35);
-				transform.eulerAngles = currentRotation;
-			}
-			else
-			{
-				if (noFlapTimer > 1.5)
-				{
-					degree = -35f;
-					transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, degree, Time.deltaTime));
-				}
-			}			
-		}
-		previousYPos = currentYPos;
+		return direction;
+	}
+
+	public bool glidingNow()
+	{
+		return gliding;
 	}
 }
