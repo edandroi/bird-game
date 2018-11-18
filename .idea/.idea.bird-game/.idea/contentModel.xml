@@ -6,6 +6,28 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Mirza Beig" t="Include">
+          <e p="_DOCS" t="Include">
+            <e p="README - Inferno VFX.txt" t="Include" />
+          </e>
+          <e p="Particle Systems" t="Include">
+            <e p="_Common" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="_Demo" t="Include">
+                  <e p="DemoManager.cs" t="Include" />
+                  <e p="FPSDisplay.cs" t="Include" />
+                  <e p="FPSTest.cs" t="Include" />
+                  <e p="LoopingParticleSystemsManager.cs" t="Include" />
+                  <e p="MouseFollow.cs" t="Include" />
+                  <e p="OneshotParticleSystemsManager.cs" t="Include" />
+                  <e p="ParticleManager.cs" t="Include" />
+                </e>
+                <e p="AnimatedLight.cs" t="Include" />
+                <e p="CameraShake.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="PDollar" t="Include">
           <e p="Resources" t="Include">
             <e p="GestureSet" t="Include">
@@ -77,6 +99,7 @@
             <e p="LerpCenter.cs" t="Include" />
             <e p="LookToMouse.cs" t="Include" />
             <e p="Parallax.cs" t="Include" />
+            <e p="ParticleBehavior.cs" t="Include" />
           </e>
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />

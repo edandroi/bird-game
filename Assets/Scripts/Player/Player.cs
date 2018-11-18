@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
 	private bool diving = false;
 	private bool timeToDive = false;
 	float mouseChangeTotal = 0;
+	private float mouseChangeX;
+	private float mousePosPreX;
 
 	public float drag = 0.01f;
 	private float degree;
@@ -198,36 +200,45 @@ public class Player : MonoBehaviour {
 	// Diving Input and Gesture	
 	void Diving()
 	{
-		if (mouseChange > 0 && flapState > 0) // if we are going up and 
+		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
+//		Debug.Log("mouse x is "+ mouseX);
+		if (Mathf.Abs(mouseX) > .6f && diving == false)
+		{
+			Debug.Log("mouse X addded");
+			mouseChangeX += mouseX - mousePosPre;
+			mousePosPreX = mouseX;
+		}
+
+		Debug.Log("mouse x change is "+ mouseChangeX);
+		if (mouseChangeX > 1f && flapState > 0) // if we are going up and 
 		{
 			timeToDive = true;	
 		}
 		
 		if (timeToDive)
 		{
-			
 			timeLeftForDiving -= Time.deltaTime;
-			if (timeLeftForDiving > 0)
+			if (timeLeftForDiving > 0) // we have time to do the second act to dive 
 			{
-				if (mouseChange < 0)
+				if (mouseChange < 0) // if we move the mouse downwards
 				{
 					mouseChangeTotal += mouseChange;
-//					Debug.Log("mouse change total is "+Mathf.Abs(mouseChangeTotal));
 		
-					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold)
+					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold) // if the distance was enough to instantiate diving
 					{
-//						Debug.Log("Diving Now!");
 						diving = true;
 						flapState = -1;
+						mouseChangeX = 0;
 					}
 				}
 			}
-			else
+			else // if we're out of time
 			{
 				timeToDive = false;
+				mouseChangeX = 0;
 			}	
 		}
-		else
+		else // no diving state
 		{
 			timeLeftForDiving = 1.2f;
 			mouseChangeTotal = 0;
@@ -238,6 +249,8 @@ public class Player : MonoBehaviour {
 			diving = false;
 			mouseChangeTotal = 0;
 		}
+
+//		mouseChangeX = Mathf.Clamp(-5f, 5f, 0);
 	}
 	
 	void BirdRotation()
@@ -270,14 +283,6 @@ public class Player : MonoBehaviour {
 			}
 			else
 			{
-				/*
-				if (noFlapTimer == 0)
-				{
-					currentRotation = transform.eulerAngles;
-					currentRotation.z = Mathf.Clamp(currentRotation.z, -15, 30);
-					transform.eulerAngles = currentRotation;
-				}
-				*/
 				if (noFlapTimer > 1.5)
 				{
 				degree = -7f;
