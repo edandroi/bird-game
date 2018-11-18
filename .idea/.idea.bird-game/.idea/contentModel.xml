@@ -6,7 +6,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Parallax.cs" t="Include" />
         <e p="PDollar" t="Include">
           <e p="Resources" t="Include">
             <e p="GestureSet" t="Include">
@@ -77,6 +76,7 @@
             <e p="GabeCam.cs" t="Include" />
             <e p="LerpCenter.cs" t="Include" />
             <e p="LookToMouse.cs" t="Include" />
+            <e p="Parallax.cs" t="Include" />
           </e>
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />
@@ -98,6 +98,7 @@
             <e p="FlightSpeed.cs" t="Include" />
             <e p="GabeFlap.cs" t="Include" />
             <e p="GabeFlap1.cs" t="Include" />
+            <e p="MoveableArea.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="Player1.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />

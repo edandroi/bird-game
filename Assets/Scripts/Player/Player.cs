@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 	
 	// Moveable Area
 	private float maxMoveableArea = 1200;
-	private float minMoveableArea = -100;
+	private float minMoveableArea = -1000;
 	
 	void Start () {
 		m_Animator = GetComponent<Animator>();
@@ -63,11 +63,10 @@ public class Player : MonoBehaviour {
 		Flying();
 		Flapping();
 		Diving();
-		MoveableArea();
+		//MoveableArea();
 	}
 	
-	
-	
+		
 	// Get Flying Input
 	void Flying()
 	{
@@ -161,7 +160,7 @@ public class Player : MonoBehaviour {
 		gravityPre = gravityNow;
 	}
 
-	
+	/*
 	// area player is allowed to move
 	void MoveableArea()
 	{
@@ -194,6 +193,7 @@ public class Player : MonoBehaviour {
 		velocity += flapForce * .5f;
 		yield return null;
 	}
+	*/
 
 	// Diving Input and Gesture	
 	void Diving()
@@ -315,6 +315,15 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isGoingUp", true);
 				break;
 		}
+
+		if (diving)
+		{
+			m_Animator.SetBool("isDiving" , true);
+		}
+		else
+		{
+			m_Animator.SetBool("isDiving" , false);
+		}
 	}
 
 	// public variables
@@ -331,5 +340,15 @@ public class Player : MonoBehaviour {
 	public bool divingNow()
 	{
 		return diving;
+	}
+
+	public float UpperLimit()
+	{
+		return maxMoveableArea;
+	}
+	
+	public float BottomLimit()
+	{
+		return minMoveableArea;
 	}
 }

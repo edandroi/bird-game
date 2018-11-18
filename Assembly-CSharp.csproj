@@ -86,13 +86,13 @@
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\Services.cs" />
     <Compile Include="Assets\Scripts\Managers&amp;Controllers\TreeManager.cs" />
-    <Compile Include="Assets\Scripts\Player\BorderReached.cs" />
     <Compile Include="Assets\Scripts\Player\DestroyAnimation.cs" />
     <Compile Include="Assets\Scripts\Player\DisplayPlayerDirection.cs" />
     <Compile Include="Assets\Scripts\Player\DrawLine.cs" />
     <Compile Include="Assets\Scripts\Player\FlightSpeed.cs" />
     <Compile Include="Assets\Scripts\Player\GabeFlap.cs" />
     <Compile Include="Assets\Scripts\Player\GabeFlap1.cs" />
+    <Compile Include="Assets\Scripts\Player\MoveableArea.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\Player1.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
