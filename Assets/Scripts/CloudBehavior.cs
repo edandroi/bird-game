@@ -6,32 +6,39 @@ public class CloudBehavior : MonoBehaviour
 {
 
 	float speed;
+	private bool seen;
 	
-	// Use this for initialization
 	void Start ()
 	{
-
 		speed = Random.Range(GameObject.Find("CloudManager").GetComponent<CloudManager>().minSpeed, 
 			GameObject.Find("CloudManager").GetComponent<CloudManager>().maxSpeed);
-
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
-		transform.position -= Vector3.right * speed;
+//		transform.position += Vector3.right * speed;
 	}
 
+	/*
 	void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.name == "Cloud Killzone")
-		{
-			Destroy(gameObject);
-		}
-		
+	{	
 		if (other.gameObject.CompareTag("killzone"))
 		{
 			Destroy(gameObject);
 		}
+	}
+	*/
+	
+	void OnBecameInvisible() 
+	{
+		Destroy(gameObject);
+	}
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.CompareTag("cloud"))
+			{
+				Destroy(gameObject);
+			}
 	}
 }

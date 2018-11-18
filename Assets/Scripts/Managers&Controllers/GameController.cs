@@ -31,11 +31,17 @@ public class GameController : MonoBehaviour {
 		// Bird Manager
 		var birdManagerGameObject = new GameObject("Bird Manager");
 		Services.BirdManager = birdManagerGameObject.AddComponent<BirdManager>();
-		
+
 		Services.Player = GameObject.Find("Player").GetComponent<Player>();
+		Services.BackgroundManager = GameObject.Find("Game Manager").GetComponent<BackgroundManager>();
 		
 //		Services.TreeManager = GameObject.Find("Tree Manager").GetComponent<TreeManager>();
 //		Services.PlayerBird = GameObject.Find("Player").GetComponent<PlayerBird>();
+				
+//		// Background Manager
+//		var bgManagerGameObject = new GameObject("Background Manager");
+//		Services.BackgroundManager = bgManagerGameObject.AddComponent<BackgroundManager>();
+		
 		Services.FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
 	}
 }

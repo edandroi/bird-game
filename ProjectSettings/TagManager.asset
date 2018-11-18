@@ -10,6 +10,7 @@ TagManager:
   - tree
   - color detector
   - bullet
+  - cloud
   layers:
   - Default
   - TransparentFX

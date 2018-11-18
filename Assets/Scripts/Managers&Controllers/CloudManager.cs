@@ -44,12 +44,12 @@ public class CloudManager : MonoBehaviour
 			if (Services.Player.flightDirection() > 0)
 			{
 				spawnPosition = new Vector3
-					(Random.Range(playerPosition.x+20, playerPosition.x+50), Random.Range(playerPosition.y+40, playerPosition.y+60), Random.Range(playerPosition.z-10, playerPosition.z+10));
+					(Random.Range(playerPosition.x+20, playerPosition.x+50), Random.Range(playerPosition.y+40, playerPosition.y+60), Random.Range(playerPosition.z+10, playerPosition.z+90));
 			}
 			else
 			{
 				spawnPosition = new Vector3
-					(playerPosition.x + 60, Random.Range(playerPosition.y+20, playerPosition.y+50), Random.Range(playerPosition.z-10, playerPosition.z+10));
+					(playerPosition.x + 60, Random.Range(playerPosition.y+20, playerPosition.y+50), Random.Range(playerPosition.z+10, playerPosition.z+90));
 			}
 
 //			playerPosition = Camera.main.ScreenToWorldPoint
