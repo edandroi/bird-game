@@ -119,6 +119,7 @@
     <Compile Include="Assets\Scripts\Background.cs" />
     <Compile Include="Assets\Scripts\Birds\HiBack.cs" />
     <Compile Include="Assets\Scripts\CloudBehavior.cs" />
+    <Compile Include="Assets\Scripts\CloudInteraction.cs" />
     <Compile Include="Assets\Scripts\CloudsBackground.cs" />
     <Compile Include="Assets\Scripts\General\CamBehavior.cs" />
     <Compile Include="Assets\Scripts\General\CameraShake.cs" />

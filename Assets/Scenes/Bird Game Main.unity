@@ -9818,7 +9818,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
@@ -9864,10 +9864,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575ad10c269364b2cbe0bd508fd1020c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloud1: {fileID: 1337716604555792, guid: e7cf5c7652403495c8ee49d256fe9785, type: 2}
-  cloud2: {fileID: 1750765484604014, guid: afb6edd647d6144a9a6232fe1dae6583, type: 2}
-  cloud3: {fileID: 1750765484604014, guid: afb6edd647d6144a9a6232fe1dae6583, type: 2}
-  player: {fileID: 1050591567}
+  cloud1: {fileID: 1438813888129124, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+  cloud2: {fileID: 1438813888129124, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+  cloud3: {fileID: 1438813888129124, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+  cloudExplode: {fileID: 1128030350}
   timer: 0.5
   minSpeed: 0.05
   maxSpeed: 0.3
@@ -14801,6 +14801,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4174823976675022, guid: 17c42eb61e33844ecaa321753d16ba62,
     type: 2}
   m_PrefabInternal: {fileID: 1854569280}
+--- !u!1001 &961158595
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719427883437758, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121603939052670, guid: 10dc3bb22cdb244b99b2975d061c4809,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121603939052670, guid: 10dc3bb22cdb244b99b2975d061c4809,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a4fc99d904bbf4574a88cd4451d4baf1,
+        type: 3}
+    - target: {fileID: 58211199937641432, guid: 10dc3bb22cdb244b99b2975d061c4809,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 3.1527843
+      objectReference: {fileID: 0}
+    - target: {fileID: 58211199937641432, guid: 10dc3bb22cdb244b99b2975d061c4809,
+        type: 2}
+      propertyPath: m_Radius
+      value: 3.2533665
+      objectReference: {fileID: 0}
+    - target: {fileID: 58211199937641432, guid: 10dc3bb22cdb244b99b2975d061c4809,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.96775675
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 10dc3bb22cdb244b99b2975d061c4809, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1050591567
 GameObject:
   m_ObjectHideFlags: 0
@@ -14816,6 +14884,7 @@ GameObject:
   - component: {fileID: 1050591574}
   - component: {fileID: 1050591568}
   - component: {fileID: 1050591575}
+  - component: {fileID: 1050591576}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -14987,6 +15056,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3974410fd8b42be8d509888ac9a6d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &1050591576
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1050591567}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3.6
+--- !u!1 &1128030350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1438813888129124, guid: 10dc3bb22cdb244b99b2975d061c4809,
+    type: 2}
+  m_PrefabInternal: {fileID: 961158595}
 --- !u!1 &1162775161
 GameObject:
   m_ObjectHideFlags: 0

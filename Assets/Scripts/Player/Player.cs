@@ -140,7 +140,7 @@ public class Player : MonoBehaviour {
 					if (midStateTimer > 0)
 					{
 						gravityNow = 0.0005f;
-						velocity.y = Mathf.Clamp(velocity.y, 0, 0.2f);
+						velocity.y = Mathf.Clamp(velocity.y, 0, 0.05f);
 						drag = 0;
 					}
 					else

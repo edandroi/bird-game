@@ -8,7 +8,7 @@ public class CloudManager : MonoBehaviour
 	public GameObject cloud1;
 	public GameObject cloud2;
 	public GameObject cloud3;
-	public GameObject player;
+	public GameObject cloudExplode;
 
 	public float timer;
 
@@ -24,8 +24,8 @@ public class CloudManager : MonoBehaviour
 	
 	void Update ()
 	{
-		float newYPos = player.transform.position.y;
-		float newXPos = player.transform.position.x + 50f;
+		float newYPos = Services.Player.transform.position.y;
+		float newXPos = Services.Player.transform.position.x + 50f;
 		transform.position = new Vector3(newXPos, newYPos, transform.position.z);
 		
 		GenerateClouds();
@@ -54,27 +54,21 @@ public class CloudManager : MonoBehaviour
 
 //			playerPosition = Camera.main.ScreenToWorldPoint
 //				(Services.Player.transform.position);
-			/*
+			
 			switch (Random.Range(0, numOfClouds))
 			{
 				case 0:
-					spawnPosition = new Vector3(transform.position.x,transform.position.y,0 );
-					Instantiate(cloud1,spawnPosition,Quaternion.identity);
-//					cloud0.transform.localScale = new Vector3(scaler, scaler, 1); 
+					Instantiate(cloud1,spawnPosition,Quaternion.identity); 
 					break;
 				case 1: 
-					spawnPosition = new Vector3(transform.position.x,transform.position.y,0 );
-					Instantiate(cloud1,spawnPosition,Quaternion.identity);
-//					cloud1.transform.localScale = new Vector3(scaler, scaler, 1); 
+					Instantiate(cloud2,spawnPosition,Quaternion.identity);
 					break;
 				case 2:
-					spawnPosition = new Vector3(transform.position.x,transform.position.y,0 );
-					Instantiate(cloud3, spawnPosition, Quaternion.identity);
-					break;
-					
+					Instantiate(cloudExplode,spawnPosition,Quaternion.identity);
+					break;	
 			}
-			*/
-			Instantiate(cloud1,spawnPosition,Quaternion.identity);
+		
+//			Instantiate(cloudExplode,spawnPosition,Quaternion.identity);
 			timer = Random.Range(1f, 4f);
 		}
 	}

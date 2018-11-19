@@ -11,6 +11,7 @@ TagManager:
   - color detector
   - bullet
   - cloud
+  - i_cloud
   layers:
   - Default
   - TransparentFX
