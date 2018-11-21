@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class Player : MonoBehaviour {
 
@@ -197,38 +199,65 @@ public class Player : MonoBehaviour {
 	}
 	*/
 
+	void Diving2()
+	{
+		
+		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
+		if (mouseX > .1f && diving == false)
+		{
+			mouseChangeX += mouseX - mousePosPreX;
+			mousePosPreX = mouseX;
+		}
+	}
+
 	// Diving Input and Gesture	
+	
 	void Diving()
 	{
+		// three steps of diving
+		// 1. no dive = when we just flap, mouse hasn't moved beyond the treshhold to the right
+		// 2. when I drag the mouse to right above a threshhold, mouse has already passed the threshhold
+		// 3. mouse goes beyond the y threshhold
+		
+		// if the mouse continues to move right, then we 
 		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
-//		Debug.Log("mouse x is "+ mouseX);
-		if (Mathf.Abs(mouseX) > .6f && diving == false)
+		float treshholdScreenX = Camera.main.ScreenToViewportPoint(gameObject.transform.position).x;
+//		Debug.Log("threshhold screen x is "+treshholdScreenX);
+		
+		if (diving == false)
 		{
-			Debug.Log("mouse X addded");
-			mouseChangeX += mouseX - mousePosPre;
+			mouseChangeX += mouseX - mousePosPreX;
 			mousePosPreX = mouseX;
 		}
 
-		Debug.Log("mouse x change is "+ mouseChangeX);
-		if (mouseChangeX > 1f && flapState > 0) // if we are going up and 
-		{
-			timeToDive = true;	
-		}
+//		Debug.Log("mouse x is "+ mouseX);
+//		Debug.Log("mouse x change is "+ mouseChangeX);
 		
+		if (mouseChangeX > 0.01f) // if we are going up and 
+		{
+			timeToDive = true;
+		}
+		else
+		{
+			mouseChangeX = 0;
+		}
+
 		if (timeToDive)
 		{
 			timeLeftForDiving -= Time.deltaTime;
 			if (timeLeftForDiving > 0) // we have time to do the second act to dive 
 			{
+		
 				if (mouseChange < 0) // if we move the mouse downwards
 				{
 					mouseChangeTotal += mouseChange;
+					Debug.Log("mouse change y is "+mouseChangeTotal);
 		
 					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold) // if the distance was enough to instantiate diving
 					{
 						diving = true;
 						flapState = -1;
-						mouseChangeX = 0;
+//						mouseChangeX = 0;
 					}
 				}
 			}
@@ -240,7 +269,7 @@ public class Player : MonoBehaviour {
 		}
 		else // no diving state
 		{
-			timeLeftForDiving = 1.2f;
+			timeLeftForDiving = 2f;
 			mouseChangeTotal = 0;
 		}
 
@@ -252,6 +281,7 @@ public class Player : MonoBehaviour {
 
 //		mouseChangeX = Mathf.Clamp(-5f, 5f, 0);
 	}
+	
 	
 	void BirdRotation()
 	{

@@ -7,10 +7,23 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Mirza Beig" t="Include">
-          <e p="_DOCS" t="Include">
-            <e p="README - Inferno VFX.txt" t="Include" />
+        <e p="Imphenzia" t="Include">
+          <e p="GradientSky" t="Include">
+            <e p="ReadMe - GradientSky.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="Common" t="Include">
+                <e p="GradientSkyCommon.cs" t="Include" />
+              </e>
+              <e p="GradientSkyCamera.cs" t="Include" />
+              <e p="GradientSkyObject.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="VertexColorCamera.shader" t="Include" />
+              <e p="VertexColorObject.shader" t="Include" />
+            </e>
           </e>
+        </e>
+        <e p="Mirza Beig" t="Include">
           <e p="Particle Systems" t="Include">
             <e p="_Common" t="Include">
               <e p="Scripts" t="Include">
@@ -259,6 +272,7 @@
             <e p="DestroyOutsideOfScreen.cs" t="Include" />
             <e p="FeedbackAnimations.cs" t="Include" />
             <e p="FollowMouse.cs" t="Include" />
+            <e p="FollowOtherObjects.cs" t="Include" />
             <e p="GabeCam.cs" t="Include" />
             <e p="LerpCenter.cs" t="Include" />
             <e p="LookToMouse.cs" t="Include" />

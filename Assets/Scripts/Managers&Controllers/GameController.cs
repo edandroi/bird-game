@@ -42,6 +42,6 @@ public class GameController : MonoBehaviour {
 //		var bgManagerGameObject = new GameObject("Background Manager");
 //		Services.BackgroundManager = bgManagerGameObject.AddComponent<BackgroundManager>();
 		
-		Services.FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
+//		Services.FlightSpeed = GameObject.Find("Flight Speed").GetComponent<FlightSpeed>();
 	}
 }

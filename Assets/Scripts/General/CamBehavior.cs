@@ -13,13 +13,17 @@ public class CamBehavior : MonoBehaviour {
 
 	private void Update()
 	{
-		if (Services.Player.glidingNow() || Services.Player.divingNow())
+		if (Services.Player.glidingNow() )
 		{
-			zDistance = Mathf.Lerp(transform.position.z, -150, zoomEase);
+			zDistance = Mathf.Lerp(transform.position.z, -100, zoomEase);
+		}
+		else if(Services.Player.divingNow())
+		{
+        	zDistance = Mathf.Lerp(transform.position.z, -200, zoomEase);
 		}
 		else
 		{
-			zDistance = Mathf.Lerp(transform.position.z, -50, zoomEase*2f);
+			zDistance = Mathf.Lerp(transform.position.z, -500, zoomEase*2f);
 		}
 		
 		if (Services.Player.velocity.y > 2f)
