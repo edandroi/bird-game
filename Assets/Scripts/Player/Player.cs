@@ -134,7 +134,7 @@ public class Player : MonoBehaviour {
 			// if we stay on midstate
 			else if (flapState == 1) //  if we are gliding
 			{
-				if (noFlapTimer > 1f)
+				if (noFlapTimer > .3f)
 				{
 					gliding = true;
 					midStateTimer -= Time.deltaTime;
@@ -251,7 +251,7 @@ public class Player : MonoBehaviour {
 				if (mouseChange < 0) // if we move the mouse downwards
 				{
 					mouseChangeTotal += mouseChange;
-					Debug.Log("mouse change y is "+mouseChangeTotal);
+//					Debug.Log("mouse change y is "+mouseChangeTotal);
 		
 					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold) // if the distance was enough to instantiate diving
 					{

@@ -22,15 +22,15 @@ GameObject:
   - component: {fileID: 23876553881655160}
   - component: {fileID: 33190805645322176}
   - component: {fileID: 114694362661415652}
-  - component: {fileID: 114737819202144752}
   - component: {fileID: 114618156468587592}
+  - component: {fileID: 114355984361592674}
   m_Layer: 0
   m_Name: BG-Gradient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4694031181735826
 Transform:
   m_ObjectHideFlags: 1
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1683882190556692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3, y: -5.0685, z: 300}
-  m_LocalScale: {x: 95.48902, y: 2556.741, z: 1}
+  m_LocalScale: {x: 284.07983, y: 2556.741, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -86,6 +86,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683882190556692}
   m_Mesh: {fileID: 0}
+--- !u!114 &114355984361592674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1683882190556692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c621e3393cf4e4c0487a3894b212aa34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114618156468587592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,7 +115,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683882190556692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b15c0d5af41115d4384c50ac1de14ff1, type: 3}
   m_Name: 
@@ -141,7 +152,7 @@ MonoBehaviour:
   cacheGradient:
     serializedVersion: 2
     key0: {r: 0.92156863, g: 0.3647059, b: 0.4627451, a: 1}
-    key1: {r: 0.7052239, g: 0.80106217, b: 0.71575844, a: 1}
+    key1: {r: 0.7491545, g: 0.8584906, b: 0.7628215, a: 1}
     key2: {r: 0.13333334, g: 0.18039216, b: 0.4627451, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -168,14 +179,3 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   meshFilter: {fileID: 33190805645322176}
---- !u!114 &114737819202144752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1683882190556692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 326c0e7f8230a48a9ad9d199a2989035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

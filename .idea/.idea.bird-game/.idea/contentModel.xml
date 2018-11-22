@@ -260,6 +260,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Background.cs" t="Include" />
+          <e p="BackgroundLoop.cs" t="Include" />
           <e p="Birds" t="Include">
             <e p="HiBack.cs" t="Include" />
           </e>
@@ -289,6 +290,7 @@
             <e p="ColorManager.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
+            <e p="ObstavleTest.cs" t="Include" />
             <e p="Services.cs" t="Include" />
             <e p="TreeManager.cs" t="Include" />
           </e>
@@ -307,6 +309,7 @@
             <e p="SayHiToBirdsGesture.cs" t="Include" />
           </e>
           <e p="RotationLimit.cs" t="Include" />
+          <e p="SerializeMeshEditor.cs" t="Include" />
           <e p="SphereCaster.cs" t="Include" />
           <e p="Test Scripts" t="Include">
             <e p="CircleRotation.cs" t="Include" />

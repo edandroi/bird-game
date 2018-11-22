@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
+using Imphenzia;
 using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour {
 
 	public GameObject background;
 	private List<GameObject> allBackgrounds;
-
 	void Awake ()
 	{
 		allBackgrounds = new List<GameObject>();
@@ -15,10 +16,12 @@ public class BackgroundManager : MonoBehaviour {
 	private void Start()
 	{
 		AddBackground(Camera.main.transform.position.x, Camera.main.transform.position.y);
+		
 	}
 
 	public void AddBackground(float xCoordinate, float yCoordinate)
 	{
+
 		Vector3 spawnPos = 
 			new Vector3(xCoordinate, yCoordinate, 300);
 		GameObject newBackground = Instantiate(background,
