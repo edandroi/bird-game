@@ -24317,7 +24317,7 @@ MonoBehaviour:
   flapState: 0
   flapThreshhold: 0.02
   flapForce: {x: 0.06, y: 0.3}
-  diveTreshhold: 0.1
+  diveTreshhold: 0.11
   drag: 0.001
   velocityMaxY: 0.7
   velocityMaxX: 0.6

@@ -1,30 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class MoveableArea : MonoBehaviour
 {
-	bool down = false;
-	bool diving = false;
+	bool downLimit = false;
+	bool upLimit = false;
+	// Moveable Area
+	private float maxMoveableArea = 1200;
+	private float minMoveableArea = -1100;
 	
 	void Update () 
 	{
-		if (transform.position.y >= Services.Player.UpperLimit())
+		if (transform.position.y >= maxMoveableArea)
 		{
-			diving = true;
+			upLimit = true;
 		}
 		
-		if (transform.position.y <= Services.Player.BottomLimit())
+		if (transform.position.y <= minMoveableArea)
 		{
-			Debug.Log("bottom limit reached");
-			gameObject.GetComponent<Player>().enabled = false;
-			down = true;
+			downLimit = true;
 		}
 
-		while (diving == true || down == true)
+		if (upLimit == true || downLimit == true)
 		{
-			Debug.Log("I work");
-			gameObject.GetComponent<Player>().enabled = false;
 			LimitsReached();
 		}
 
@@ -32,33 +32,48 @@ public class MoveableArea : MonoBehaviour
 	
 	void LimitsReached()
 	{
-
-		if (down)
+		// If we reach the bottom boundaries
+		if (downLimit)
 		{
-			StartCoroutine(DownLimitReached(transform.position.x + 10, transform.position.y + 20, transform.position.z, 0.2f));
-			gameObject.GetComponent<Player>().enabled = true;
-			down = false;
+			StartCoroutine(DownLimitReached());
+			gameObject.GetComponent<Player>().enabled = false;
 		}
 		
-		if (diving)
+		if (!downLimit)
 		{
-			StartCoroutine(UpperLimitReached(transform.position.x - 10, transform.position.y - 20, transform.position.z, 0.2f));
 			gameObject.GetComponent<Player>().enabled = true;
-			diving = false;
+		}
+
+		// If we reach the upper boundaries
+		if (upLimit)
+		{
+			StartCoroutine(UpperLimitReached());
+			gameObject.GetComponent<Player>().enabled = false;
+		}
+
+		if (!upLimit)
+		{
+			gameObject.GetComponent<Player>().enabled = true;
 		}
 	}
 	
-	IEnumerator DownLimitReached(float x, float y, float z, float t)
+	IEnumerator DownLimitReached()
 	{
-		transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, 20f, Time.deltaTime));
-		transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), t );
-		yield return null;
+		for (float windForce = .06f; windForce > 0; windForce -=0.01f)
+		{
+			Services.Player.velocity += Vector2.up * windForce;
+			transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, 10f, .1f));
+			yield return downLimit = false;
+		}
 	}
-
-	IEnumerator UpperLimitReached(float x, float y, float z, float t)
+	
+	IEnumerator UpperLimitReached()
 	{
-		transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, -20f, Time.deltaTime));
-		transform.position = Vector3.Lerp(transform.position, new Vector3(x, y, z), t );
-		yield return null;
-	}
+		for (float windForce = .05f; windForce > 0; windForce -=0.009f)
+		{
+			Services.Player.velocity += Vector2.down * windForce;
+			transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, -10f, .1f));
+			yield return upLimit = false;
+		}
+	}	
 }

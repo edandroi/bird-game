@@ -46,12 +46,7 @@ public class Player : MonoBehaviour {
 	public float velocityMaxX;
 	private Vector3 currentRotation;
 	private Animator m_Animator;
-	private float angle;
-	
-	// Moveable Area
-	private float maxMoveableArea = 1200;
-	private float minMoveableArea = -1000;
-	
+	private float angle;	
 	void Start () {
 		m_Animator = GetComponent<Animator>();
 	}
@@ -167,16 +162,10 @@ public class Player : MonoBehaviour {
 	// Diving Input and Gesture	
 	
 	void Diving()
-	{
-		// three steps of diving
-		// 1. no dive = when we just flap, mouse hasn't moved beyond the treshhold to the right
-		// 2. when I drag the mouse to right above a threshhold, mouse has already passed the threshhold
-		// 3. mouse goes beyond the y threshhold
-		
+	{	
 		// if the mouse continues to move right, then we 
 		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
 		float treshholdScreenX = Camera.main.ScreenToViewportPoint(gameObject.transform.position).x;
-//		Debug.Log("threshhold screen x is "+treshholdScreenX);
 		
 		if (diving == false)
 		{
@@ -187,7 +176,7 @@ public class Player : MonoBehaviour {
 //		Debug.Log("mouse x is "+ mouseX);
 //		Debug.Log("mouse x change is "+ mouseChangeX);
 		
-		if (mouseChangeX > 0.01f) // if we are going up and 
+		if (mouseChangeX > 0.025f) // if we are going up and 
 		{
 			timeToDive = true;
 		}
@@ -335,15 +324,5 @@ public class Player : MonoBehaviour {
 	public bool divingNow()
 	{
 		return diving;
-	}
-
-	public float UpperLimit()
-	{
-		return maxMoveableArea;
-	}
-	
-	public float BottomLimit()
-	{
-		return minMoveableArea;
 	}
 }

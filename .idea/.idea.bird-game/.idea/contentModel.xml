@@ -259,14 +259,19 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Background.cs" t="Include" />
-          <e p="BackgroundLoop.cs" t="Include" />
           <e p="Birds" t="Include">
             <e p="HiBack.cs" t="Include" />
           </e>
-          <e p="CloudBehavior.cs" t="Include" />
-          <e p="CloudInteraction.cs" t="Include" />
-          <e p="CloudsBackground.cs" t="Include" />
+          <e p="Environment" t="Include">
+            <e p="Background.cs" t="Include" />
+            <e p="BackgroundLoop.cs" t="Include" />
+            <e p="CloudBehavior.cs" t="Include" />
+            <e p="CloudInteraction.cs" t="Include" />
+            <e p="CloudsBackground.cs" t="Include" />
+            <e p="ParticleBehavior.cs" t="Include" />
+            <e p="TreeBehavior.cs" t="Include" />
+            <e p="TreeKillzone.cs" t="Include" />
+          </e>
           <e p="General" t="Include">
             <e p="CamBehavior.cs" t="Include" />
             <e p="CameraShake.cs" t="Include" />
@@ -278,7 +283,8 @@
             <e p="LerpCenter.cs" t="Include" />
             <e p="LookToMouse.cs" t="Include" />
             <e p="Parallax.cs" t="Include" />
-            <e p="ParticleBehavior.cs" t="Include" />
+            <e p="RotationLimit.cs" t="Include" />
+            <e p="SphereCaster.cs" t="Include" />
           </e>
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />
@@ -308,15 +314,11 @@
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />
           </e>
-          <e p="RotationLimit.cs" t="Include" />
           <e p="SerializeMeshEditor.cs" t="Include" />
-          <e p="SphereCaster.cs" t="Include" />
           <e p="Test Scripts" t="Include">
             <e p="CircleRotation.cs" t="Include" />
             <e p="Wiggle.cs" t="Include" />
           </e>
-          <e p="TreeBehavior.cs" t="Include" />
-          <e p="TreeKillzone.cs" t="Include" />
         </e>
       </e>
       <e p="bird-game.sln" t="IncludeFlat" />
