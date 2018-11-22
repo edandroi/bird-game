@@ -164,52 +164,6 @@ public class Player : MonoBehaviour {
 		gravityPre = gravityNow;
 	}
 
-	/*
-	// area player is allowed to move
-	void MoveableArea()
-	{
-		bool down = false;
-		if (transform.position.y >= maxMoveableArea)
-		{
-			diving = true;
-		}
-
-		if (transform.position.y <= minMoveableArea)
-		{
-			down = true;
-		}
-
-		if (down)
-		{
-			StartCoroutine(DownLimitReached());
-		}
-		
-		
-		if (transform.eulerAngles.z > 25)
-		{
-			down = false;
-		}
-	}
-	
-	IEnumerator DownLimitReached()
-	{
-		transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, 20f, Time.deltaTime));
-		velocity += flapForce * .5f;
-		yield return null;
-	}
-	*/
-
-	void Diving2()
-	{
-		
-		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
-		if (mouseX > .1f && diving == false)
-		{
-			mouseChangeX += mouseX - mousePosPreX;
-			mousePosPreX = mouseX;
-		}
-	}
-
 	// Diving Input and Gesture	
 	
 	void Diving()
@@ -256,8 +210,10 @@ public class Player : MonoBehaviour {
 					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold) // if the distance was enough to instantiate diving
 					{
 						diving = true;
-						flapState = -1;
-//						mouseChangeX = 0;
+						if (diving)
+						{
+							flapState = -1;
+						}
 					}
 				}
 			}
@@ -278,8 +234,6 @@ public class Player : MonoBehaviour {
 			diving = false;
 			mouseChangeTotal = 0;
 		}
-
-//		mouseChangeX = Mathf.Clamp(-5f, 5f, 0);
 	}
 	
 	
@@ -304,21 +258,27 @@ public class Player : MonoBehaviour {
 		{
 			
 			if (direction > 0)
-			{
-				float newAngle = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
-				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, newAngle, 0.5f));
+			{	
+				degree = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 				currentRotation = transform.eulerAngles;
 				currentRotation.z = Mathf.Clamp(currentRotation.z, -7, 7);
 				transform.eulerAngles = currentRotation;
 			}
 			else
-			{
-				if (noFlapTimer > 1.5)
+			{	
+				if (velocity.y < -1.5f)
 				{
-				degree = -7f;
-				transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, degree, Time.deltaTime));
+					diving = true;
+				degree = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
+				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
+				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
+				
 				}
-			}			
+			
+			}	
+		
 		}
 		previousYPos = currentYPos;
 	}
