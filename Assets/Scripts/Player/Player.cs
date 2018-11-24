@@ -58,11 +58,11 @@ public class Player : MonoBehaviour {
 		BirdRotation();
 	}
 
-	void Update () {
+	void Update () 
+	{
 		Flying();
 		Flapping();
 		Diving();
-		//MoveableArea();
 	}
 	
 		

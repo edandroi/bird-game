@@ -12,6 +12,8 @@ public class Background : MonoBehaviour
 	{
 		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 		spawned = false;
+//		Debug.Log("width: "+m_SpriteRenderer.bounds.max.x);
+//		Debug.Log("height: "+m_SpriteRenderer.bounds.max.y);
 	}
 	
 	void Update () 

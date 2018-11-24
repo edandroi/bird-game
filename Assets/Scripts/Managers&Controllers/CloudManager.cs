@@ -51,6 +51,8 @@ public class CloudManager : MonoBehaviour
 				spawnPosition = new Vector3
 					(playerPosition.x + 60, Random.Range(playerPosition.y+20, playerPosition.y+50), Random.Range(playerPosition.z+10, playerPosition.z+90));
 			}
+			
+			Vector3 spawnPosExplode = new Vector3(spawnPosition.z, spawnPosition.y, Services.Player.transform.position.z);
 
 //			playerPosition = Camera.main.ScreenToWorldPoint
 //				(Services.Player.transform.position);
@@ -64,7 +66,7 @@ public class CloudManager : MonoBehaviour
 					Instantiate(cloud2,spawnPosition,Quaternion.identity);
 					break;
 				case 2:
-					Instantiate(cloudExplode,spawnPosition,Quaternion.identity);
+					Instantiate(cloudExplode,spawnPosExplode,Quaternion.identity);
 					break;	
 			}
 		

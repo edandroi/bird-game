@@ -7,6 +7,9 @@ using UnityEngine;
 public class BackgroundManager : MonoBehaviour {
 
 	public GameObject background;
+	public GameObject m_Tip1;
+	public GameObject m_Tip2;
+	
 	private List<GameObject> allBackgrounds;
 	void Awake ()
 	{
@@ -33,5 +36,10 @@ public class BackgroundManager : MonoBehaviour {
 	{
 		allBackgrounds.Remove(backgroundObj);
 		Destroy(backgroundObj);
+	}
+
+	public void AddBottomObject()
+	{
+
 	}
 }

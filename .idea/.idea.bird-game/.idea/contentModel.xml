@@ -42,42 +42,6 @@
             </e>
           </e>
         </e>
-        <e p="PDollar" t="Include">
-          <e p="Resources" t="Include">
-            <e p="GestureSet" t="Include">
-              <e p="10-stylus-MEDIUM" t="Include">
-                <e p="10-stylus-medium-arrowhead-01.xml" t="Include" />
-                <e p="10-stylus-medium-asterisk-01.xml" t="Include" />
-                <e p="10-stylus-medium-D-01.xml" t="Include" />
-                <e p="10-stylus-medium-exclamation_point-01.xml" t="Include" />
-                <e p="10-stylus-medium-five_point_star-01.xml" t="Include" />
-                <e p="10-stylus-medium-H-01.xml" t="Include" />
-                <e p="10-stylus-medium-half_note-01.xml" t="Include" />
-                <e p="10-stylus-medium-I-01.xml" t="Include" />
-                <e p="10-stylus-medium-line-01.xml" t="Include" />
-                <e p="10-stylus-medium-N-01.xml" t="Include" />
-                <e p="10-stylus-medium-null-01.xml" t="Include" />
-                <e p="10-stylus-medium-P-01.xml" t="Include" />
-                <e p="10-stylus-medium-pitchfork-01.xml" t="Include" />
-                <e p="10-stylus-medium-six_point_star-01.xml" t="Include" />
-                <e p="10-stylus-medium-T-01.xml" t="Include" />
-                <e p="10-stylus-medium-X-01.xml" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="Demo.cs" t="Include" />
-            <e p="DemoOct7.cs" t="Include" />
-            <e p="PDollarGestureRecognizer" t="Include">
-              <e p="Geometry.cs" t="Include" />
-              <e p="Gesture.cs" t="Include" />
-              <e p="GestureIO.cs" t="Include" />
-              <e p="Point.cs" t="Include" />
-              <e p="PointCloudRecognizer.cs" t="Include" />
-              <e p="Result.cs" t="Include" />
-            </e>
-          </e>
-        </e>
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
             <e p="JetBrains" t="Include">
@@ -260,7 +224,10 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Birds" t="Include">
+            <e p="FlockManager.cs" t="Include" />
+            <e p="FlyAway.cs" t="Include" />
             <e p="HiBack.cs" t="Include" />
+            <e p="MigrationBehavior.cs" t="Include" />
           </e>
           <e p="Environment" t="Include">
             <e p="Background.cs" t="Include" />
@@ -269,6 +236,7 @@
             <e p="CloudInteraction.cs" t="Include" />
             <e p="CloudsBackground.cs" t="Include" />
             <e p="ParticleBehavior.cs" t="Include" />
+            <e p="Stars.cs" t="Include" />
             <e p="TreeBehavior.cs" t="Include" />
             <e p="TreeKillzone.cs" t="Include" />
           </e>
@@ -286,6 +254,7 @@
             <e p="RotationLimit.cs" t="Include" />
             <e p="SphereCaster.cs" t="Include" />
           </e>
+          <e p="GradientExample.cs" t="Include" />
           <e p="Managers&amp;Controllers" t="Include">
             <e p="AudioManager.cs" t="Include" />
             <e p="BackgroundManager.cs" t="Include" />
@@ -294,6 +263,7 @@
             <e p="CameraControl.cs" t="Include" />
             <e p="CloudManager.cs" t="Include" />
             <e p="ColorManager.cs" t="Include" />
+            <e p="EnvironmentManager.cs" t="Include" />
             <e p="GameController.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="ObstavleTest.cs" t="Include" />
@@ -318,6 +288,16 @@
           <e p="Test Scripts" t="Include">
             <e p="CircleRotation.cs" t="Include" />
             <e p="Wiggle.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="Trash" t="Include">
+            <e p="3ColorGradient.shader" t="Include" />
+            <e p="BackgroundGradient.shader" t="Include" />
+            <e p="Gradient.shader" t="Include" />
+            <e p="Gradient4.shader" t="Include" />
+            <e p="Gradient4Color.shader" t="Include" />
+            <e p="GradientSkyShader.shader" t="Include" />
           </e>
         </e>
       </e>

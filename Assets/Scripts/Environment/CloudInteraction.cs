@@ -7,6 +7,7 @@ public class CloudInteraction : MonoBehaviour
 	private Animator m_Animator;
 	private bool destroy = false;
 	private float timer;
+	public GameObject bird;
 	
 	void Start ()
 	{
@@ -33,6 +34,7 @@ public class CloudInteraction : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			m_Animator.SetBool("isExploded", true);
+			Instantiate(bird, transform.position, Quaternion.identity);
 			destroy = true;
 		}
 	}
