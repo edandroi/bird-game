@@ -43,10 +43,13 @@ public class Player : MonoBehaviour {
 	private float currentYPos;
 	private float previousYPos = 0;
 	public float velocityMaxY;
+	public float velocityMinY;
 	public float velocityMaxX;
 	private Vector3 currentRotation;
 	private Animator m_Animator;
-	private float angle;	
+	private float angle;
+	public bool downLimitReached = false;
+	public bool upLimitReached = false;
 	void Start () {
 		m_Animator = GetComponent<Animator>();
 	}
@@ -60,6 +63,7 @@ public class Player : MonoBehaviour {
 
 	void Update () 
 	{
+		Debug.Log("flap state is "+flapState);
 		Flying();
 		Flapping();
 		Diving();
@@ -145,7 +149,7 @@ public class Player : MonoBehaviour {
 						gliding = false;
 						gravityNow -= addGravity;
 						flapState = 0;
-						midStateTimer = 10f;
+						midStateTimer = 12f;
 					}
 				}
 			}
@@ -156,7 +160,15 @@ public class Player : MonoBehaviour {
 				velocity += Vector2.left * drag;
 			}
 		}
+
+		if (upLimitReached)
+		{
+			flapState = 2;
+		}
+
+
 		gravityPre = gravityNow;
+		velocity.y = Mathf.Clamp(velocity.y, velocityMinY, velocityMaxY);
 	}
 
 	// Diving Input and Gesture	
@@ -259,7 +271,7 @@ public class Player : MonoBehaviour {
 			{	
 				if (velocity.y < -1.5f)
 				{
-					diving = true;
+				diving = true;
 				degree = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
 				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
@@ -307,6 +319,13 @@ public class Player : MonoBehaviour {
 		else
 		{
 			m_Animator.SetBool("isDiving" , false);
+		}
+
+		if (downLimitReached)
+		{
+			m_Animator.SetBool("isDiving" , false);
+			m_Animator.SetBool("isGoingDown", true);
+			
 		}
 	}
 

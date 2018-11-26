@@ -164,6 +164,7 @@
     <Compile Include="Assets\Scripts\Player\SayHiToBirdsGesture.cs" />
     <Compile Include="Assets\Scripts\SerializeMeshEditor.cs" />
     <Compile Include="Assets\Scripts\Test Scripts\CircleRotation.cs" />
+    <Compile Include="Assets\Scripts\Test Scripts\ParticleStopTest.cs" />
     <Compile Include="Assets\Scripts\Test Scripts\Wiggle.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\Shaders\Trash\Gradient4Color.shader" />

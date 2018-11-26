@@ -17,10 +17,20 @@ public class MoveableArea : MonoBehaviour
 		{
 			upLimit = true;
 		}
+		else
+		{
+			upLimit = false;
+		}
 		
 		if (transform.position.y <= minMoveableArea)
 		{
 			downLimit = true;
+			Services.Player.downLimitReached = true;
+		}
+		else
+		{
+			downLimit = false;
+			Services.Player.downLimitReached = false;
 		}
 
 		if (upLimit == true || downLimit == true)
@@ -33,36 +43,21 @@ public class MoveableArea : MonoBehaviour
 	void LimitsReached()
 	{
 		// If we reach the bottom boundaries
+		
+		float windForce = Services.Player.velocity.y < 0 ? .12f : .05f;
 		if (downLimit)
 		{
-			StartCoroutine(DownLimitReached());
+			Services.Player.velocity += Vector2.up * windForce;
+			transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, 11f, .1f));
 		}
 		
 
 		// If we reach the upper boundaries
 		if (upLimit)
 		{
-			StartCoroutine(UpperLimitReached());
-		}
-	}
-	
-	IEnumerator DownLimitReached()
-	{
-		for (float windForce = .03f; windForce >= 0; windForce -=0.01f)
-		{
-			Services.Player.velocity += Vector2.up * windForce;
-			transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, 10f, .1f));
-			yield return downLimit = false;
-		}
-	}
-	
-	IEnumerator UpperLimitReached()
-	{
-		for (float windForce = .06f; windForce >= 0; windForce -=0.01f)
-		{
+			//StartCoroutine(UpperLimitReached());
 			Services.Player.velocity += Vector2.down * windForce;
 			transform.eulerAngles = new Vector3(0,0, Mathf.LerpAngle(transform.eulerAngles.z, -11f, .1f));
-			yield return upLimit = false;
 		}
-	}	
+	}
 }
