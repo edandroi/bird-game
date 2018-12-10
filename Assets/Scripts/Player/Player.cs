@@ -469,7 +469,6 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
-				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.diving:
@@ -482,14 +481,11 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
-				
-				if (preState == 0)
+				m_Animator.SetTrigger("toDiving");
+
+				if (diving)
 				{
-				m_Animator.SetBool("toDive", true);
-				}
-				else
-				{
-					m_Animator.SetBool("toDive", false);
+					m_Animator.ResetTrigger("toDiving");
 				}
 
 				break;
