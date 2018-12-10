@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
 using UnityEditor;
@@ -28,6 +29,19 @@ public class Player : MonoBehaviour {
 	private float noFlapTimer = 0;
 	private float flapTimer = 0;
 	private float direction;
+	
+	// Flapping states
+	/*
+	private bool midToUp;
+	private bool midToDown;
+	private bool downToMid;
+	private bool upToMid;
+	*/
+	/*
+	private bool upPos;
+	private bool downPos;
+	private bool midPos;
+	*/
 	
 	// Diving Variables
 	private float timeLeftForDiving = 1f;
@@ -63,7 +77,7 @@ public class Player : MonoBehaviour {
 
 	void Update () 
 	{
-		Debug.Log("flap state is "+flapState);
+//		Debug.Log("flap state is "+flapState);
 		Flying();
 		Flapping();
 		Diving();
@@ -172,68 +186,85 @@ public class Player : MonoBehaviour {
 	}
 
 	// Diving Input and Gesture	
+		
+	enum DivingState { Horizontal, Vertical, Diving}
+
+	private float mouseChangeY;
+	
+	private DivingState currentDiveState = DivingState.Horizontal;
 	
 	void Diving()
 	{	
-		// if the mouse continues to move right, then we 
+		// Use Enum -  integers
+		// great for store different states
+		
+		switch (currentDiveState)
+		{
+				case DivingState.Horizontal:
+					diving = false;
+					timeToDive = false;
+					timeLeftForDiving = 2f;
+					mouseChangeY = 0;
+					break;
+				
+				case DivingState.Vertical:
+					diving = false;
+					timeToDive = true;
+					break;
+				
+				case DivingState.Diving:
+					flapState = -1;
+					diving = true;
+					timeToDive = false;
+					break;		
+		}
+		
+		// we track the mouse movement on x axis
 		float mouseX = Camera.main.ScreenToViewportPoint(Input.mousePosition).x;
 		float treshholdScreenX = Camera.main.ScreenToViewportPoint(gameObject.transform.position).x;
 		
-		if (diving == false)
-		{
-			mouseChangeX += mouseX - mousePosPreX;
-			mousePosPreX = mouseX;
-		}
+		// eger horizontal bolgedeysek
 
-//		Debug.Log("mouse x is "+ mouseX);
-//		Debug.Log("mouse x change is "+ mouseChangeX);
+//		Debug.Log("mouse change x is "+ mouseChangeX);
+//		Debug.Log("mouse change y is "+ mouseChangeY);
 		
-		if (mouseChangeX > 0.025f) // if we are going up and 
+		if(mouseX > 0)
 		{
-			timeToDive = true;
-		}
-		else
+		mouseChangeX += mouseX - mousePosPreX;
+		mousePosPreX = mouseX;
+		}	
+		
+		if (mouseChangeX > .5)
 		{
-			mouseChangeX = 0;
+			currentDiveState = DivingState.Vertical;
+//			Debug.Log("mouse change x is "+ mouseChangeX);
 		}
 
-		if (timeToDive)
+		if (timeToDive) 
 		{
 			timeLeftForDiving -= Time.deltaTime;
 			if (timeLeftForDiving > 0) // we have time to do the second act to dive 
 			{
-		
 				if (mouseChange < 0) // if we move the mouse downwards
 				{
-					mouseChangeTotal += mouseChange;
-//					Debug.Log("mouse change y is "+mouseChangeTotal);
+					mouseChangeY += mouseChange;
 		
-					if (Mathf.Abs(mouseChangeTotal) > diveTreshhold) // if the distance was enough to instantiate diving
+					if (mouseChangeY < diveTreshhold) // if the distance was enough to instantiate diving
 					{
-						diving = true;
-						if (diving)
-						{
-							flapState = -1;
-						}
+						currentDiveState = DivingState.Diving;
 					}
 				}
 			}
 			else // if we're out of time
 			{
-				timeToDive = false;
-				mouseChangeX = 0;
+				currentDiveState = DivingState.Horizontal;
 			}	
 		}
-		else // no diving state
-		{
-			timeLeftForDiving = 2f;
-			mouseChangeTotal = 0;
-		}
 
-		if (diving == true && mouseChange > 0)
+		// we're not diving anymore
+		if (diving && mouseChange > 0)
 		{
-			diving = false;
-			mouseChangeTotal = 0;
+			currentDiveState = DivingState.Horizontal;
 		}
 	}
 	
@@ -255,10 +286,9 @@ public class Player : MonoBehaviour {
 			angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
 		}
-		else 
+		else // if we are not diving or gliding
 		{
-			
-			if (direction > 0)
+			if (direction > 0 )
 			{	
 				degree = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
 				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
@@ -269,15 +299,9 @@ public class Player : MonoBehaviour {
 			}
 			else
 			{	
-				if (velocity.y < -1.5f)
-				{
-				diving = true;
-				degree = Mathf.Rad2Deg * Mathf.Atan2(velocity.y, velocity.x);
+				degree = 0;
 				angle = Mathf.LerpAngle(transform.rotation.z, degree, Time.deltaTime);
 				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, degree), Time.deltaTime);
-				
-				}
-			
 			}	
 		
 		}
@@ -285,40 +309,280 @@ public class Player : MonoBehaviour {
 	}
 		
 	// Animation States
+	private int animationStates;
+	private int preState;
+
+	enum BirdState
+	{
+		diving,
+		gliding,
+		goingUpToMid,
+		goingMidToUp,
+		isUp,
+		goingDownToMid,
+		goingMidToDown,
+		isDown,
+		isMiddle,
+	}
+
+	private BirdState currentBirdState;
+
 	void Flapping()
 	{
-		int animationState = flapState;
-		if (flapState == -1)
+		// -1 == dive
+		// 0 == going down
+		// 1 == mid state
+		// 2 == going up
+
+		int animationState = flapState + 1;
+
+		switch (animationState) // Determine animation state
+		
 		{
-			animationState = 0;
+			case 0: // diving
+				currentBirdState = BirdState.diving;
+				break;
+			
+			case 1: // mouse going down
+
+				if (preState == 2) // if we are coming from middle
+					currentBirdState = BirdState.goingMidToDown;
+
+				if (preState == 1) // if we were already down
+					currentBirdState = BirdState.isDown;
+				
+				break;
+			
+			case 2: // mouse going mid
+				
+				if (preState == 1)
+					currentBirdState = BirdState.goingUpToMid;
+
+				if (preState == 3)
+					currentBirdState = BirdState.goingDownToMid;
+
+				if (preState == 2)
+					currentBirdState = BirdState.isMiddle;
+				break;
+			
+			case 3: // mouse going up 
+
+				if (preState == 2)
+				currentBirdState = BirdState.goingMidToUp;
+
+				if (preState == 3)
+					currentBirdState = BirdState.isUp;
+				
+				break;
 		}
+		
+		preState = animationState;
+
+		switch (currentBirdState)
+		{
+			
+			case BirdState.isDown:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , true);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", false);
+				break;
+				
+			case BirdState.goingDownToMid:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , true);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", true);
+				m_Animator.SetBool("isUp", false);
+				break;
+				
+			case BirdState.isMiddle:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", true);
+				m_Animator.SetBool("isUp", false);
+				break;
+			
+			case BirdState.goingMidToUp:
+				m_Animator.SetBool("isGoingMidToUp" , true);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", false);
+				break;
+			
+			case BirdState.isUp:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", true);
+				break;
+			
+			case BirdState.goingUpToMid:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , true);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", true);
+				m_Animator.SetBool("isUp", false);
+				break;
+			
+			case BirdState.goingMidToDown:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , true);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", false);
+				break;
+			
+			case BirdState.diving:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , true);
+				m_Animator.SetBool("isGliding" , false);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", false);
+				break;
+			
+			case BirdState.gliding:
+				m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , false);
+				m_Animator.SetBool("isGoingUpToMid" , false);
+				m_Animator.SetBool("isGoingDownToMid" , false);
+				m_Animator.SetBool("isDiving" , false);
+				m_Animator.SetBool("isGliding" , true);
+				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isMiddle", false);
+				m_Animator.SetBool("isUp", false);
+				break;
+		}
+		
+
+
+	
+
+		
+		
+		/*
+		if (diving)
+		{
+			animationStates = 0;
+		}
+
+		if (flapState == 1 && direction < 0) // mid to down
+		{
+			m_Animator.SetBool("isGoingMidToUp" , false);
+				m_Animator.SetBool("isGoingMidToDown" , true);
+			m_Animator.SetBool("isGoingUpToMid" , false);
+			m_Animator.SetBool("isGoingDownToMid" , false);
+			m_Animator.SetBool("isDiving" , false);
+			m_Animator.SetBool("isGliding" , false);
+		}
+		
+		if (flapState == 1 && direction >= 0) // mid to up
+		{
+				m_Animator.SetBool("isGoingMidToUp" , true);
+			m_Animator.SetBool("isGoingMidToDown" , false);
+			m_Animator.SetBool("isGoingUpToMid" , false);
+			m_Animator.SetBool("isGoingDownToMid" , false);
+			m_Animator.SetBool("isDiving" , false);
+			m_Animator.SetBool("isGliding" , false);
+		}
+		
+		if (flapState == 0 && direction >= 0) // down to mid
+		{
+			m_Animator.SetBool("isGoingMidToUp" , false);
+			m_Animator.SetBool("isGoingMidToDown" , false);
+			m_Animator.SetBool("isGoingUpToMid" , false);
+			m_Animator.SetBool("isGoingDownToMid" , true);
+			m_Animator.SetBool("isDiving" , false);
+			m_Animator.SetBool("isGliding" , false);
+		}
+		
+		if (flapState == 1 && direction < 0) // up to mid
+		{
+			m_Animator.SetBool("isGoingMidToUp" , false);
+			m_Animator.SetBool("isGoingMidToDown" , false);
+			m_Animator.SetBool("isGoingUpToMid" , true);
+			m_Animator.SetBool("isGoingDownToMid" , false);
+			m_Animator.SetBool("isDiving" , false);
+			m_Animator.SetBool("isGliding" , false);
+		}
+
+		if (gliding)
+		{
+			animationStates = 2;
+		}
+		*/
+
+
+	}
+
+	void Flapping2()
+	{
+		//all the states should be accessible immediately
+		// any state
+		int animationState = flapState + 1;
 
 		switch (animationState)
 		{
 			case 0:
+				m_Animator.SetBool("isDiving" , true);
+				m_Animator.SetBool("isGoingUp", false);
+				m_Animator.SetBool("isGoingDown", false);
+				m_Animator.SetBool("isGoingMiddle", false);
+				break;
+			case 1:
 				m_Animator.SetBool("isGoingDown", true);
 				m_Animator.SetBool("isGoingMiddle", false);
 				m_Animator.SetBool("isGoingUp", false);
-				break;
-			case 1:
-				m_Animator.SetBool("isGoingDown", false);
-				m_Animator.SetBool("isGoingMiddle", true);
-				m_Animator.SetBool("isGoingUp", false);
+				m_Animator.SetBool("isDiving" , false);
 				break;
 			case 2:
 				m_Animator.SetBool("isGoingDown", false);
+				m_Animator.SetBool("isGoingMiddle", true);
+				m_Animator.SetBool("isGoingUp", false);
+				m_Animator.SetBool("isDiving" , false);
+				break;
+			case 3:
+				m_Animator.SetBool("isGoingDown", false);
 				m_Animator.SetBool("isGoingMiddle", false);
 				m_Animator.SetBool("isGoingUp", true);
+				m_Animator.SetBool("isDiving" , false);
 				break;
-		}
-
-		if (diving)
-		{
-			m_Animator.SetBool("isDiving" , true);
-		}
-		else
-		{
-			m_Animator.SetBool("isDiving" , false);
 		}
 
 		if (downLimitReached)

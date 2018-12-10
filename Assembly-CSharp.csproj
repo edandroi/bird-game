@@ -121,7 +121,6 @@
     <Compile Include="Assets\Scripts\Environment\CloudInteraction.cs" />
     <Compile Include="Assets\Scripts\Environment\CloudsBackground.cs" />
     <Compile Include="Assets\Scripts\Environment\ParticleBehavior.cs" />
-    <Compile Include="Assets\Scripts\Environment\Stars.cs" />
     <Compile Include="Assets\Scripts\Environment\TreeBehavior.cs" />
     <Compile Include="Assets\Scripts\Environment\TreeKillzone.cs" />
     <Compile Include="Assets\Scripts\General\CamBehavior.cs" />
@@ -160,6 +159,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\Player1.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBird.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerTrail.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirds.cs" />
     <Compile Include="Assets\Scripts\Player\SayHiToBirdsGesture.cs" />
     <Compile Include="Assets\Scripts\SerializeMeshEditor.cs" />
@@ -178,6 +178,7 @@
     <None Include="Assets\Shaders\Trash\Gradient.shader" />
     <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\Shaders\Overlay.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
@@ -189,12 +190,14 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\Shaders\CGIncludes\PhotoshopBlendModes.cginc" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
     <None Include="Assets\Shaders\Trash\Gradient4.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
     <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
+    <None Include="Assets\Shaders\ColorBlendNoise.shader" />
     <None Include="Assets\Shaders\Trash\3ColorGradient.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />

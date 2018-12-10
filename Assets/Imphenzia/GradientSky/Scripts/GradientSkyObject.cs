@@ -49,6 +49,9 @@ namespace Imphenzia
         /// </summary>
         void Update()
         {
+            if(meshFilter.sharedMesh == null)
+                meshFilter.sharedMesh = CreateMesh();
+            
             // If the number of color keys in the gradient and the cache gradient don't match...
             if (gradient.colorKeys.Length != cacheGradient.colorKeys.Length)
             {

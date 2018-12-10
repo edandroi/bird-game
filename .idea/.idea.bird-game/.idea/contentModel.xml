@@ -236,7 +236,6 @@
             <e p="CloudInteraction.cs" t="Include" />
             <e p="CloudsBackground.cs" t="Include" />
             <e p="ParticleBehavior.cs" t="Include" />
-            <e p="Stars.cs" t="Include" />
             <e p="TreeBehavior.cs" t="Include" />
             <e p="TreeKillzone.cs" t="Include" />
           </e>
@@ -281,6 +280,7 @@
             <e p="Player.cs" t="Include" />
             <e p="Player1.cs" t="Include" />
             <e p="PlayerBird.cs" t="Include" />
+            <e p="PlayerTrail.cs" t="Include" />
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />
           </e>
@@ -292,6 +292,11 @@
           </e>
         </e>
         <e p="Shaders" t="Include">
+          <e p="CGIncludes" t="Include">
+            <e p="PhotoshopBlendModes.cginc" t="Include" />
+          </e>
+          <e p="ColorBlendNoise.shader" t="Include" />
+          <e p="Overlay.shader" t="Include" />
           <e p="Trash" t="Include">
             <e p="3ColorGradient.shader" t="Include" />
             <e p="BackgroundGradient.shader" t="Include" />
