@@ -70,11 +70,11 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TimeScale: 0.1
+    - _TimeScale: 0.05
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 0.7075472, g: 0.630785, b: 0.6728214, a: 0}
-    - _Color1: {r: 0.32600567, g: 0.6981132, b: 0.65693665, a: 1}
+    - _Color0: {r: 0.6965184, g: 0.5742702, b: 0.8396226, a: 0}
+    - _Color1: {r: 0.11213954, g: 0.43449444, b: 0.6792453, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
