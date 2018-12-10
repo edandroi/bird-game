@@ -335,12 +335,12 @@ public class Player : MonoBehaviour {
 		// 2 == going up
 
 		int animationState = flapState + 1;
-
+		
 		switch (animationState) // Determine animation state
 		
 		{
 			case 0: // diving
-				currentBirdState = BirdState.diving;
+					currentBirdState = BirdState.diving;
 				break;
 			
 			case 1: // mouse going down
@@ -391,6 +391,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , true);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 				
 			case BirdState.goingDownToMid:
@@ -400,9 +401,10 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isGoingDownToMid" , true);
 				m_Animator.SetBool("isDiving" , false);
 				m_Animator.SetBool("isGliding" , false);
-				m_Animator.SetBool("isDown" , false);
+				m_Animator.SetBool("isDown" , diving);
 				m_Animator.SetBool("isMiddle", true);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 				
 			case BirdState.isMiddle:
@@ -415,6 +417,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", true);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.goingMidToUp:
@@ -427,6 +430,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.isUp:
@@ -439,6 +443,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", true);
+				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.goingUpToMid:
@@ -451,6 +456,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", true);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.goingMidToDown:
@@ -463,6 +469,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 			
 			case BirdState.diving:
@@ -475,7 +482,18 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
+				
+				if (preState == 0)
+				{
+				m_Animator.SetBool("toDive", true);
+				}
+				else
+				{
+					m_Animator.SetBool("toDive", false);
+				}
+
 				break;
+
 			
 			case BirdState.gliding:
 				m_Animator.SetBool("isGoingMidToUp" , false);
@@ -487,6 +505,7 @@ public class Player : MonoBehaviour {
 				m_Animator.SetBool("isDown" , false);
 				m_Animator.SetBool("isMiddle", false);
 				m_Animator.SetBool("isUp", false);
+				m_Animator.SetBool("toDive", false);
 				break;
 		}
 		

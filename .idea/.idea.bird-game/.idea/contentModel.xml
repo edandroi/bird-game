@@ -284,7 +284,6 @@
             <e p="SayHiToBirds.cs" t="Include" />
             <e p="SayHiToBirdsGesture.cs" t="Include" />
           </e>
-          <e p="SerializeMeshEditor.cs" t="Include" />
           <e p="Test Scripts" t="Include">
             <e p="CircleRotation.cs" t="Include" />
             <e p="ParticleStopTest.cs" t="Include" />
